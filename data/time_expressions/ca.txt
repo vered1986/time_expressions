@@ -1,0 +1,5 @@
+morning	matí
+noon	migdia
+afternoon	tarda
+evening	vespre
+night	nit

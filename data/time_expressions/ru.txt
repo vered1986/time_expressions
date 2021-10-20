@@ -1,0 +1,5 @@
+morning	утро
+noon	полдень
+afternoon	после полудня
+evening	вечер
+night	ночь

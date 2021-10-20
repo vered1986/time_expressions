@@ -1,0 +1,5 @@
+morning	reggel
+noon	dél
+afternoon	délután
+evening	este
+night	éjszaka

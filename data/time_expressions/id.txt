@@ -1,0 +1,4 @@
+morning	pagi
+noon	siang|tengah hari
+afternoon	sore
+night	malam

@@ -1,0 +1,5 @@
+morning	सुबह
+noon	दोपहर
+afternoon	दोपहर
+evening	संध्या
+night	रात

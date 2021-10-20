@@ -1,0 +1,12 @@
+yksi
+kaksi
+kolme
+neljä
+viisi
+kuusi
+seitsemän
+kahdeksan
+yhdeksän
+kymmenen
+yksitoista
+kaksitoista

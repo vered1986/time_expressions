@@ -1,0 +1,5 @@
+morning	buổi sáng
+noon	không bật
+afternoon	buổi chiều
+evening	buổi tối
+night	đêm

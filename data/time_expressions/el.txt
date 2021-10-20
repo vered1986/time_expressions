@@ -1,0 +1,5 @@
+morning	πρωί
+noon	μεσημέρι
+afternoon	απόγευμα
+evening	απόγευμα
+night	Νύχτα

@@ -1,0 +1,5 @@
+morning	早晨|早上|上午
+noon	中午|正午
+afternoon	下午
+evening	晚上|晚間|夜
+night	晚|夜|夜晚

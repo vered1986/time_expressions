@@ -1,0 +1,5 @@
+morning	朝
+noon	昼|正午|午刻|昼時
+afternoon	午後|アフタヌーン
+evening	イブニング|夜|夕方
+night	夜|晩|夜分

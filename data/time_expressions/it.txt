@@ -1,0 +1,5 @@
+morning	mattina
+noon	mezzogiorno
+afternoon	pomeriggio
+evening	sera
+night	notte

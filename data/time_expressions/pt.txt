@@ -1,0 +1,4 @@
+morning	manhã
+noon	meio-dia
+afternoon	tarde
+night	noite

@@ -1,0 +1,5 @@
+morning	rano|ranek
+noon	południe
+afternoon	popołudnie
+evening	wieczór
+night	noc

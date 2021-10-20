@@ -1,0 +1,5 @@
+morning	ráno
+noon	poledne
+afternoon	odpoledne
+evening	večer
+night	noc

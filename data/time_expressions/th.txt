@@ -1,0 +1,5 @@
+morning	เช้า
+noon	กลางวัน
+afternoon	ยามบ่าย
+evening	ตอนเย็น
+night	กลางคืน

@@ -1,0 +1,5 @@
+morning	morgen
+noon	middagstid
+afternoon	ettermiddag
+evening	kveld
+night	natt

@@ -1,0 +1,5 @@
+morning	صباح
+noon	وقت الظهيرة
+afternoon	بعد الظهر
+evening	مساء
+night	ليل

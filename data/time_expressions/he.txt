@@ -1,0 +1,6 @@
+before morning	לפנות בוקר
+morning	בוקר
+noon	צהריים
+afternoon	אחר הצהריים|אחרי הצהריים|אחה"צ
+evening	ערב
+night	לילה

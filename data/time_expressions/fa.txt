@@ -1,0 +1,5 @@
+morning	صبح
+noon	ظهر
+afternoon	بعد از ظهر
+evening	عصر
+night	شب

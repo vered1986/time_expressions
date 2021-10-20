@@ -1,0 +1,5 @@
+morning	ochtend|morgen
+noon	middag
+afternoon	namiddag
+evening	avond
+night	nacht

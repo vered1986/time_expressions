@@ -1,0 +1,5 @@
+morning	morgen
+noon	mittag
+afternoon	nachmittag
+evening	abend
+night	nacht

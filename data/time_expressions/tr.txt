@@ -1,0 +1,5 @@
+morning	sabah
+noon	öğle vakti
+afternoon	öğleden sonra
+evening	akşam
+night	gece

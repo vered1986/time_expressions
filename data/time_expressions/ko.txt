@@ -1,0 +1,5 @@
+morning	아침
+noon	정오
+afternoon	오후
+evening	저녁
+night	밤
