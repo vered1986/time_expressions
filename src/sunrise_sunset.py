@@ -11,7 +11,7 @@ sns.set(rc={'figure.figsize': (14, 14)}, font_scale=2)
 from astral import sun
 from astral import geocoder as gd
 
-from src.find_time_expressions_in_wiki import draw_violin
+from src.extractive.find_time_expressions_in_wiki import draw_violin
 
 
 def main():

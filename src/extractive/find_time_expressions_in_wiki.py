@@ -25,7 +25,7 @@ def main():
     # Compute the distribution
     grounding = find_time_expressions(corpus_file, cardinals, time_expressions, label_map, is_asian)
 
-    with open(f"output/{args.lang}.json", "w") as f_out:
+    with open(f"{args.out_dir}/{args.lang}.json", "w") as f_out:
         json.dump(grounding, f_out)
 
 

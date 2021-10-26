@@ -15,7 +15,7 @@ def main():
     labels = list(zip(*time_expressions))[0]
     labels = [l for l in labels if l != "before morning"]
 
-    with open(f"output/{args.lang}.json") as f_in:
+    with open(f"{args.out_dir}/{args.lang}.json") as f_in:
         grounding = json.load(f_in)
 
     grounding = {exp: {int(hr): cnt for hr, cnt in values.items()}
@@ -23,7 +23,7 @@ def main():
                  if exp != "before morning"}
 
     # Infer 24hr clock with ILP
-    result = solve_ilp(grounding)
+    result = solve_ilp(grounding, labels)
 
     if result is not None:
         new_grounding, start_and_end_times = result
@@ -35,17 +35,17 @@ def main():
         title = f"Grounding of Time Expressions in {args.lang}"
         ax = draw_violin(new_grounding, labels, start_and_end_times)
         fig = ax.get_figure()
-        fig.savefig(f"output/{args.lang}.png")
+        fig.savefig(f"{args.out_dir}/{args.lang}.png")
         fig.suptitle(title, fontsize=24)
         fig.show()
 
 
-def solve_ilp(grounding):
+def solve_ilp(grounding, expressions):
     """
     Define and solve the ILP problem and determine the 24-hr clock time
     for each observation
     """
-    params = create_ilp_model(grounding)
+    params = create_ilp_model(grounding, expressions)
     model, hr_variables, start_variables, end_variables, cnt_by_var = params
     model.optimize()
 
@@ -63,7 +63,7 @@ def solve_ilp(grounding):
     return new_grounding, start_and_end_times
 
 
-def create_ilp_model(grounding):
+def create_ilp_model(grounding, expressions):
     """
     Create the ILP model representing the binary AM/PM variable
     """
@@ -75,11 +75,10 @@ def create_ilp_model(grounding):
     hr_variables, start_variables, end_variables, counted_variables = variables
 
     # Create the model constraints
-    create_constraints(model, hr_variables, start_variables, end_variables, counted_variables)
+    create_constraints(model, hr_variables, start_variables, end_variables, counted_variables, expressions)
 
     # Create the objective function: maximize number of observations fit inside each range
     # Normalize count per expression
-    per_exp_counts = {exp: sum(counts.values()) for exp, counts in grounding.items()}
     cnt_by_var = {var: grounding[exp][int(var.VarName.split("_")[-1])]
                   for exp, vars in hr_variables.items() for var in vars}
     create_objective(model, hr_variables, counted_variables, cnt_by_var)
@@ -133,7 +132,7 @@ def get_value(var):
     return h + 12 * var.getAttr("x")
 
 
-def create_constraints(model, hr_vars, start_vars, end_vars, counted_vars):
+def create_constraints(model, hr_vars, start_vars, end_vars, counted_vars, expressions):
     """
     Create the model constraints
     """
@@ -161,7 +160,6 @@ def create_constraints(model, hr_vars, start_vars, end_vars, counted_vars):
             model.addConstr(start_vars["morning"] >= end_vars["night"], f"c_night_before_morning")
 
     # Sort expressions
-    expressions = ["morning", "noon", "afternoon", "evening", "night"]
     for i in range(len(expressions) - 1):
         model.addConstr(start_vars[expressions[i+1]] >= end_vars[expressions[i]],
                         f"c_{expressions[i]}_ends_before_{expressions[i+1]}_starts")
