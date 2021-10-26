@@ -2,8 +2,6 @@ import json
 import argparse
 import gurobipy as gb
 
-from src.common import draw_violin
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -24,21 +22,11 @@ def main():
                  if exp != "before morning"}
 
     # Infer 24hr clock with ILP
-    result = solve_ilp(grounding, labels)
+    new_grounding = solve_ilp(grounding, labels)
 
-    if result is not None:
-        new_grounding, start_and_end_times = result
-
-        # Night: add 24 to the hours < 12
-        start_and_end_times["night"] = (start_and_end_times["night"][0], start_and_end_times["night"][1] + 24)
-        new_grounding["night"] = {h + 24 if h < 12 else h: vals for h, vals in new_grounding["night"].items()}
-
-        title = f"Grounding of Time Expressions in {args.lang}"
-        ax = draw_violin(new_grounding, labels, start_and_end_times)
-        fig = ax.get_figure()
-        fig.savefig(f"{args.out_dir}/{args.lang}.png")
-        fig.suptitle(title, fontsize=24)
-        fig.show()
+    if new_grounding is not None:
+        with open(f"{args.out_dir}/{args.lang}_24.json", "w") as f_out:
+            json.dump(new_grounding, f_out)
 
 
 def solve_ilp(grounding, expressions):
@@ -58,10 +46,12 @@ def solve_ilp(grounding, expressions):
     else:
         new_grounding = {exp: {int(get_value(var)): cnt_by_var[var] for var in curr_vars}
                          for exp, curr_vars in hr_variables.items()}
-        start_and_end_times = {exp: (start_variables[exp].getAttr("x"), end_variables[exp].getAttr("x"))
-                               for exp in hr_variables.keys()}
 
-    return new_grounding, start_and_end_times
+        for exp in new_grounding.keys():
+            new_grounding[exp]["start"] = start_variables[exp].getAttr("x")
+            new_grounding[exp]["end"] = end_variables[exp].getAttr("x")
+
+    return new_grounding
 
 
 def create_ilp_model(grounding, expressions):

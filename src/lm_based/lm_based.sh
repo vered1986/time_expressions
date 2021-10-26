@@ -7,5 +7,5 @@ python -m src.lm_based.extract_distribution_from_lm --device ${device};
 
 for lang in "${langs[@]}"
 do
-  python -m src.infer_24h_clock --lang ${lang} --out_dir ../output/lm_based;
+  python -m src.infer_24h_clock --lang ${lang} --out_dir output/lm_based;
 done
