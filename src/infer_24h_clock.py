@@ -12,11 +12,12 @@ def main():
     args = parser.parse_args()
 
     time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{args.lang}.txt")]
-    labels = list(zip(*time_expressions))[0]
-    labels = [l for l in labels if l != "before morning"]
 
     with open(f"{args.out_dir}/{args.lang}.json") as f_in:
         grounding = json.load(f_in)
+
+    labels = list(zip(*time_expressions))[0]
+    labels = [l for l in labels if l != "before morning" and l in grounding.keys()]
 
     grounding = {exp: {int(hr): cnt for hr, cnt in values.items()}
                  for exp, values in grounding.items()
