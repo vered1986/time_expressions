@@ -1,0 +1,5 @@
+Była [MASK] <time_exp>.
+Jest [MASK] <time_exp>.
+Był <time_exp>, około [MASK].
+Jest <time_exp>, około [MASK].
+Jestem wolny <time_exp>, spotkajmy się o [MASK].

@@ -7,3 +7,4 @@ seaborn==0.11.2
 tqdm==4.62.3
 wikiextractor==3.0.4
 astral
+transformers==4.11.3

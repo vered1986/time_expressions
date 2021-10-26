@@ -1,0 +1,5 @@
+已經是<time_exp> [MASK] 點了。
+現在是<time_exp> [MASK] 點。
+已經是<time_exp>了，[MASK]點左右。
+現在是<time_exp>，大約[MASK]點鐘。
+我<time_exp>有空，我們[MASK]點見。

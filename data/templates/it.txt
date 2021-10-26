@@ -1,0 +1,5 @@
+Erano le [MASK] del <time_exp>.
+Sono le [MASK] del <time_exp>.
+Era <time_exp>, verso le [MASK].
+È <time_exp>, verso le [MASK].
+Domani <time_exp> sono libero, ci vediamo alle [MASK].

@@ -1,0 +1,5 @@
+Il était [MASK] heures du <time_exp>.
+Il est [MASK] heures du <time_exp>.
+C'était le <time_exp>, vers [MASK] heures.
+C'est le <time_exp>, vers [MASK] heures.
+Je suis libre le <time_exp>, rendez-vous à [MASK] h.

@@ -6,12 +6,14 @@ import argparse
 
 from collections import defaultdict
 
+from src.common import get_surrounding_words
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--wiki_dir", default=".", type=str, required=False, help="Directory for the wiki files")
     parser.add_argument("--lang", default="en", type=str, required=False, help="Language code")
-    parser.add_argument("--out_dir", default="output", type=str, required=False, help="Output directory")
+    parser.add_argument("--out_dir", default="output/extractive", type=str, required=False, help="Output directory")
     args = parser.parse_args()
 
     corpus_file = f"{args.wiki_dir}/{args.lang}_wiki.tar.gz"
@@ -101,23 +103,6 @@ def find_time_expressions(corpus_file, cardinals, time_expressions, label_map, i
                     grounding[label_map[expression]][int(time)] += 1
 
     return grounding
-
-
-def get_surrounding_words(match, sent, is_asian=False):
-    """
-    Returns the 3 words around the match from each side
-    """
-    if is_asian:
-        split_sent = lambda s: list(s)
-        join_words = lambda ws: "".join(ws)
-    else:
-        split_sent = lambda s: s.split()
-        join_words = lambda ws: " ".join(ws)
-
-    before = join_words(split_sent(re.sub(f"{match}.*", "", sent))[-3:])
-    after = join_words(split_sent(re.sub(f".*{match}", "", sent))[:-3])
-    around = before + after
-    return around
 
 
 if __name__ == '__main__':

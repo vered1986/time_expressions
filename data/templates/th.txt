@@ -1,0 +1,5 @@
+เวลา [MASK] โมง<time_exp>
+เวลา [MASK] โมง<time_exp>
+เป็นเวลา<time_exp>ประมาณ [MASK] โมง
+เป็นเวลา<time_exp>ประมาณ [MASK] โมง
+ฉันว่างตอน<time_exp> เจอกันตอน [MASK] โมง

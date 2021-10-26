@@ -1,3 +1,4 @@
+import re
 import pandas as pd
 import seaborn as sns
 
@@ -36,3 +37,20 @@ def draw_violin(grounding, labels, start_end_times=None):
             ax.plot([i - 0.25, i + 0.25], [end, end], color="black", linewidth=2, linestyle='dashed')
 
     return ax
+
+
+def get_surrounding_words(match, sent, is_asian=False):
+    """
+    Returns the 3 words around the match from each side
+    """
+    if is_asian:
+        split_sent = lambda s: list(s)
+        join_words = lambda ws: "".join(ws)
+    else:
+        split_sent = lambda s: s.split()
+        join_words = lambda ws: " ".join(ws)
+
+    before = join_words(split_sent(re.sub(f"{match}.*", "", sent))[-3:])
+    after = join_words(split_sent(re.sub(f".*{match}", "", sent))[:-3])
+    around = before + after
+    return around

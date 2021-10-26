@@ -1,0 +1,5 @@
+ساعت [MASK] <time_exp> بود.
+ساعت [MASK] <time_exp> است.
+<time_exp> بود حدود ساعت [MASK]
+<time_exp> است، حدود ساعت [MASK].
+من <time_exp> آزادم، بیا ساعت [MASK] همدیگر را ببینیم.

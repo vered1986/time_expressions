@@ -1,0 +1,5 @@
+Saat itu jam [MASK] <time_exp>.
+Ini jam [MASK] <time_exp>.
+Saat itu <time_exp>, sekitar jam [MASK].
+Sudah <time_exp>, sekitar jam [MASK].
+Saya bebas di <time_exp> hari, mari kita bertemu jam [MASK].

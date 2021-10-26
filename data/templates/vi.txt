@@ -1,0 +1,5 @@
+Đã [MASK] giờ <time_exp>.
+Bây giờ là [MASK] giờ <time_exp>.
+Đó là buổi <time_exp>, khoảng [MASK] giờ.
+Bây giờ là buổi <time_exp>, khoảng [MASK] giờ.
+<time_exp> em rảnh, [MASK] h gặp nhau nhé.

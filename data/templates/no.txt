@@ -1,0 +1,5 @@
+Klokken var [MASK] om <time_exp>.
+Klokken er [MASK] om <time_exp>.
+Det var <time_exp>, rundt [MASK].
+Det er <time_exp>, rundt [MASK].
+Jeg er ledig om <time_exp>, la oss møtes kl [MASK].

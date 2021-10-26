@@ -1,0 +1,5 @@
+Было [MASK] <time_exp>.
+Сейчас [MASK] <time_exp>.
+Было <time_exp>, около [MASK].
+<time_exp>, около [MASK].
+<time_exp> свободен, встретимся в [MASK].

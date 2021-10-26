@@ -1,0 +1,5 @@
+<time_exp> [MASK] volt.
+<time_exp> [MASK] van.
+<time_exp> volt, [MASK] körül.
+<time_exp> van, [MASK] körül.
+<time_exp> szabad vagyok, [MASK]-kor találkozunk.

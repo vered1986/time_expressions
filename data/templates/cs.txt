@@ -1,0 +1,5 @@
+Bylo [MASK] <time_exp>.
+Je [MASK] hodin <time_exp>.
+Bylo <time_exp>, kolem [MASK].
+Je <time_exp>, kolem [MASK].
+<time_exp> mám volno, sejdeme se v [MASK].

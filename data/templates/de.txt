@@ -1,0 +1,5 @@
+Es war [MASK] Uhr <time_exp>.
+Es ist [MASK] Uhr <time_exp>.
+Es war <time_exp>, gegen [MASK] Uhr.
+Es ist <time_exp>, gegen [MASK] Uhr.
+Ich habe <time_exp> frei, treffen wir uns um [MASK] Uhr.

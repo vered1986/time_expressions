@@ -1,0 +1,5 @@
+Kello oli [MASK] <time_exp>lla.
+Kello on [MASK] <time_exp>lla.
+Oli <time_exp>, noin [MASK].
+On <time_exp>, noin kello [MASK].
+Olen vapaa <time_exp>lla, tavataan klo [MASK].

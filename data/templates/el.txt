@@ -1,0 +1,5 @@
+Ήταν [MASK] το <time_exp>.
+Είναι [MASK] το <time_exp>.
+Ήταν <time_exp>, γύρω στις [MASK].
+Είναι <time_exp>, γύρω στις [MASK].
+Είμαι ελεύθερος το <time_exp>, ας βρεθούμε στις [MASK].

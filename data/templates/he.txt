@@ -1,0 +1,5 @@
+השעה הייתה [MASK] ב<time_exp>.
+השעה [MASK] ב<time_exp>.
+זה היה <time_exp>, בסביבות [MASK].
+זה <time_exp>, בסביבות [MASK].
+אני פנוי ב<time_exp>, בוא ניפגש ב-[MASK].

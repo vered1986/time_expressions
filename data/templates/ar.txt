@@ -1,0 +1,5 @@
+كانت الساعة [MASK] <time_exp>ا.
+إنها [MASK] <time_exp>ا.
+كان ال<time_exp> ، حوالي [MASK].
+إنه ال<time_exp> ، حوالي [MASK].
+أنا متفرغ في ال<time_exp> ، لنلتقي في [MASK].

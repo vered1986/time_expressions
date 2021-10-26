@@ -1,0 +1,5 @@
+Eren les [MASK] del <time_exp>.
+Són les [MASK] del <time_exp>.
+Era el <time_exp>, cap a les [MASK].
+És <time_exp>, cap a les [MASK].
+Estic lliure al <time_exp>, ens veiem a les [MASK].

@@ -1,0 +1,5 @@
+Була [MASK] <time_exp>.
+Зараз [MASK] <time_exp>.
+Був <time_exp>, близько [MASK].
+Зараз <time_exp>, близько [MASK].
+<time_exp> я вільний, зустрінемось о [MASK].

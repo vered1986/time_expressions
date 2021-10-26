@@ -1,0 +1,5 @@
+<time_exp> [MASK]'du.
+Saat <time_exp>ın [MASK]'u.
+<time_exp> oldu, [MASK] civarı.
+<time_exp>, [MASK] civarı.
+<time_exp> boşum, [MASK]'da buluşalım.

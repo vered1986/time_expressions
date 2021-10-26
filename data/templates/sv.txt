@@ -1,0 +1,5 @@
+Klockan var [MASK] på <time_exp>.
+Klockan är [MASK] på <time_exp>.
+Det var <time_exp>, runt [MASK].
+Det är <time_exp>, runt [MASK].
+Jag är ledig på <time_exp>, vi ses kl [MASK].
