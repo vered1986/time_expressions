@@ -1,6 +1,5 @@
 import os
 import json
-import torch
 import argparse
 import numpy as np
 
@@ -14,8 +13,7 @@ def main():
     args = parser.parse_args()
 
     # Load multilingual BERT
-    device = torch.device(f"cuda:{args.device}") if args.device >= 0 else torch.device("cpu")
-    unmasker = pipeline('fill-mask', model='bert-base-multilingual-cased', device=device)
+    unmasker = pipeline('fill-mask', model='bert-base-multilingual-cased', device=args.device)
 
     # Iterate over languages
     for file in os.listdir("data/templates"):
@@ -37,7 +35,7 @@ def compute_distribution(unmasker, templates, cardinals, time_expressions_map):
     """
     Uses multilingual BERT to find the distribution of 12-hr clock hours for each time expression.
     """
-    cardinals_map = {i: [i, cardinals[i]] for i in range(1, 13)}
+    cardinals_map = {i+1: [str(i+1), cardinals[i]] for i in range(12)}
     cardinals_map_inv = {val: k for k, vals in cardinals_map.items() for val in vals}
     distributions = {}
 
@@ -60,12 +58,13 @@ def compute_distribution(unmasker, templates, cardinals, time_expressions_map):
                     curr_distribution[num] += item["score"]
 
             # Normalize and add to main distribution
-            all_sum = np.sum(curr_distribution.values())
-            for i in range(1, 13):
-                distribution[i] += curr_distribution[i] * 1.0 / all_sum
+            all_sum = np.sum(list(curr_distribution.values()))
+            if all_sum > 0:
+                for i in range(1, 13):
+                    distribution[i] += curr_distribution[i] * 1.0 / all_sum
 
         # Normalize and add to the result
-        all_sum = np.sum(distribution.values())
+        all_sum = np.sum(list(distribution.values()))
         distribution = {i: score * 1.0 / all_sum for i, score in distribution.items()}
         distributions[en_exp] = distribution
 
