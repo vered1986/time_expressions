@@ -25,12 +25,6 @@ def main():
             grd = {exp: {int(h): score for h, score in per_exp.items() if h not in {"start", "end"}}
                    for exp, per_exp in grd.items()}
 
-            # Normalize
-            all_sum = {exp: np.sum(list(per_exp.values())) for exp, per_exp in grd.items()}
-            grd = {exp: {
-                h: (score * 1.0 / all_sum[exp]) if all_sum[exp] > 0 else 0 for h, score in per_exp.items()}
-                for exp, per_exp in grd.items()}
-
             # Night: add 24 to the hours < 12
             if start_end["night"][1] < 12:
                 start_end["night"] = (start_end["night"][0], start_end["night"][1] + 24)
