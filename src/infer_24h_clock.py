@@ -82,9 +82,7 @@ def create_ilp_model(grounding):
     per_exp_counts = {exp: sum(counts.values()) for exp, counts in grounding.items()}
     cnt_by_var = {var: grounding[exp][int(var.VarName.split("_")[-1])]
                   for exp, vars in hr_variables.items() for var in vars}
-    relative_importance = {var: grounding[exp][int(var.VarName.split("_")[-1])] * 1.0 / per_exp_counts[exp]
-                           for exp, vars in hr_variables.items() for var in vars}
-    create_objective(model, hr_variables, counted_variables, relative_importance)
+    create_objective(model, hr_variables, counted_variables, cnt_by_var)
     return model, hr_variables, start_variables, end_variables, cnt_by_var
 
 
@@ -151,11 +149,11 @@ def create_constraints(model, hr_vars, start_vars, end_vars, counted_vars):
             if exp != "night":
                 model.addConstr((counted == 1) >> (hr_after_start + hr_before_end == 2))
             else:
-                model.addConstr((counted == 1) >> (hr_after_start + hr_before_end <= 1))
+                model.addConstr((counted == 1) >> (hr_after_start + hr_before_end == 1))
 
-        # Each expression at least 2 hours
+        # During the day, start < end
         if exp != "night":
-            model.addConstr(start_vars[exp] + 2 <= end_vars[exp], f"c_{exp}_min_duration")
+            model.addConstr(start_vars[exp] + 1 <= end_vars[exp], f"c_{exp}_min_duration")
         # At night, start > end, between 8 and 16 hours
         else:
             model.addConstr(end_vars[exp] + 24 - start_vars[exp] >= 8, f"c_{exp}_min_duration")
