@@ -12,6 +12,8 @@ from matplotlib.patches import Patch
 from collections import Counter, defaultdict
 from matplotlib.collections import PolyCollection
 
+pd.set_option('max_columns', None)
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -35,6 +37,7 @@ def main():
                 gold[country] = curr["main"]
 
     plot_by_exp(gold)
+    plt.grid()
     plt.show()
 
 
@@ -126,13 +129,19 @@ def correct_am_pm(curr_data, exp, edge):
     """
     am = [x for x in curr_data if int(x.split(":")[0]) < 12]
     pm = [x for x in curr_data if int(x.split(":")[0]) >= 12]
-    am24, pm24 = [to_24hr(x) for x in am], [to_24hr(x) for x in pm]
-    quantile1 = np.quantile(am24 + pm24, 0.25)
-    quantile3 = np.quantile(am24 + pm24, 0.75)
-
     am_crt = [":".join((str(int(x.split(":")[0]) + 12), x.split(":")[1])) for x in am]
     pm_crt = [":".join((str(int(x.split(":")[0]) - 12), x.split(":")[1])) for x in pm]
-    am_crt24, pm_crt24 = [to_24hr(x) for x in am_crt], [to_24hr(x) for x in pm_crt]
+
+    am24, pm24 = [to_24hr(x) for x in am], [to_24hr(x) for x in pm]
+
+    # For night: add 24 before 4 pm
+    if exp == "night":
+        am24 = [x + 24 for x in am24]
+        pm24 = [x + 24 if x < 16 else x for x in pm24]
+
+    am_crt24, pm_crt24 = [x + 12 for x in am24], [x - 12 for x in pm24]
+    quantile1 = np.quantile(am24 + pm24, 0.25)
+    quantile3 = np.quantile(am24 + pm24, 0.75)
 
     new_times, corrected = [], []
     zipped = list(zip(am + pm, am_crt + pm_crt, am24 + pm24, am_crt24 + pm_crt24))
@@ -141,10 +150,10 @@ def correct_am_pm(curr_data, exp, edge):
     # and there are less than 10 of these (less chance of error).
     for (t_orig, t_crt, t_orig24, t_crt24), cnt in Counter(zipped).items():
         if (quantile3 < t_orig24 or t_orig24 < quantile1) and (quantile1 <= t_crt24 <= quantile3) and (cnt < 10):
-            new_times.append(t_crt)
+            new_times.extend([t_crt] * cnt)
             corrected.append((t_orig, t_crt))
         else:
-            new_times.append(t_orig)
+            new_times.extend([t_orig] * cnt)
 
     print(f"{exp[0].upper()}{exp[1:]} {edge} corrected: {corrected} ({len(corrected)} items)")
     return new_times
@@ -155,13 +164,6 @@ def load_batch_results(country, lang, df):
     Load the results for a specific batch
     """
     expressions = ["morning", "noon", "afternoon", "evening", "night"]
-    start_end_cols = [f"Answer.{exp}_end" for exp in expressions] + [f"Answer.{exp}_start" for exp in expressions]
-
-    # Drop rows with empty values
-    new_df = df.dropna(subset=start_end_cols)
-    dropped_rows = df[~df.index.isin(new_df.index)]
-    print(f"Dropped {len(dropped_rows)} annotations.")
-    df = new_df
 
     # Find how many rows we have in other languages and remove them if most of the annotations
     # are from the same language (e.g. US-en) but not if there is diversity
@@ -175,8 +177,8 @@ def load_batch_results(country, lang, df):
         languages = dict(languages.most_common(1))
 
     # Load the data for the expressions in this list
-    data = {exp: {"start": [h if ":" in h else f"{h}:00" for h in df[f"Answer.{exp}_start"].values],
-                  "end": [h if ":" in h else f"{h}:00" for h in df[f"Answer.{exp}_end"].values],
+    data = {exp: {"start": [h if ":" in h else f"{h}:00" for h in df[f"Answer.{exp}_start"].dropna().values],
+                  "end": [h if ":" in h else f"{h}:00" for h in df[f"Answer.{exp}_end"].dropna().values],
                   "translation": Counter([t.lower() for t in df[f"Answer.{exp}_translation"].dropna().values])}
             for exp in expressions}
 
@@ -195,8 +197,11 @@ def load_batch_results(country, lang, df):
     # Load additional time expressions
     additional_times_df = df[[col for col in df.columns if "Answer.other" in col]].dropna(
         subset=["Answer.other_start", "Answer.other_end", "Answer.other_source"])
+    name_col = "Answer.other_source"
 
-    name_col = "Answer.other_source" if lang == "en" else "Answer.other_translation"
+    if lang != "en":
+        additional_times_df = additional_times_df.dropna(subset=["Answer.other_translation"])
+        name_col = "Answer.other_translation"
 
     additional_times = defaultdict(lambda: defaultdict(list))
     for _, row in additional_times_df.iterrows():
