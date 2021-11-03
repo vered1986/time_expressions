@@ -1,0 +1,1 @@
+{"start": ["<time_exp> alkaa klo [MASK].", "<time_exp> alkaa [MASK]."], "end": ["<time_exp> päättyy klo [MASK].", "<time_exp> päättyy [MASK]."]}

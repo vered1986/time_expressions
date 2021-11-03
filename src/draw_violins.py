@@ -32,9 +32,7 @@ def main():
 
             # Convert the probability into frequency distribution
             if model == "lm_based":
-                for exp in grd.keys():
-                    per_exp = grd[exp]
-                    grd[exp] = {h: int(score * 10000) for h, score in per_exp.items()}
+                grd = {exp: {h: int(score * 10000) for h, score in per_exp.items()} for exp, per_exp in grd.items()}
 
             start_and_end_times.append(start_end)
             grounding.append(grd)

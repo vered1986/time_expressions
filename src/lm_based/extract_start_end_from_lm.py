@@ -3,7 +3,6 @@ import json
 import argparse
 
 from transformers import pipeline
-
 from src.lm_based.common import compute_distribution
 
 
@@ -17,18 +16,20 @@ def main():
     unmasker = pipeline('fill-mask', model='bert-base-multilingual-cased', device=args.device)
 
     # Iterate over languages
-    for file in os.listdir("data/templates/distribution"):
-        lang = file.replace(".txt", "")
+    for file in os.listdir("data/templates/start_end"):
+        lang = file.replace(".json", "")
         print(lang)
-        templates = [line.strip() for line in open(f"data/templates/distribution/{lang}.txt")]
+        templates = json.load(open(f"data/templates/start_end/{lang}.json"))
         cardinals = [line.strip() for line in open(f"data/cardinals/{lang}.txt")]
         time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{lang}.txt")]
         time_expressions_map = {en: other.split("|") for en, other in time_expressions}
 
         # Compute the distribution
-        grounding = compute_distribution(unmasker, templates, cardinals, time_expressions_map)
+        grounding = {}
+        for edge, curr_templates in templates.items():
+            grounding[edge] = compute_distribution(unmasker, curr_templates, cardinals, time_expressions_map)
 
-        with open(f"{args.out_dir}/{lang}.json", "w") as f_out:
+        with open(f"{args.out_dir}/{lang}_start_end.json", "w") as f_out:
             json.dump(grounding, f_out)
 
 

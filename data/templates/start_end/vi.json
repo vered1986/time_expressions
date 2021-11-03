@@ -1,0 +1,1 @@
+{"start": ["<time_exp> bắt đầu lúc [MASK] giờ.", "<time_exp> bắt đầu từ [MASK] giờ."], "end": ["<time_exp> kết thúc lúc [MASK] giờ.", "<time_exp> kết thúc vào [MASK] giờ."]}

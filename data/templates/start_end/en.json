@@ -1,0 +1,2 @@
+{"start": ["The <time_exp> starts at [MASK].", "The <time_exp> starts in [MASK]."],
+ "end": ["The <time_exp> ends at [MASK].", "The <time_exp> ends in [MASK]."]}
