@@ -34,23 +34,25 @@ def main():
             if model == "lm_based":
                 for exp in grd.keys():
                     per_exp = grd[exp]
-                    grd[exp] = {h: int(score * 10000) for h, score in per_exp.items()}
+                    minimum = min([score for h, score in per_exp.items() if h not in {"start", "end"}])
+                    z = 1.0 / minimum
+                    grd[exp] = {h: int(score * z) for h, score in per_exp.items()}
 
             start_and_end_times.append(start_end)
             grounding.append(grd)
 
     labels = [l for l in labels if l in grounding[0]]
     title = f"Grounding of Time Expressions in {args.lang}"
-    ax = draw_violin(grounding, labels, start_and_end_times)
+    ax = draw_box(grounding, labels)
     fig = ax.get_figure()
     fig.savefig(f"output/plots/{args.lang}.png")
     fig.suptitle(title, fontsize=24)
     fig.show()
 
 
-def draw_violin(grounding, labels, start_end_times, start_end_in_xaxis=False):
+def draw_box(grounding, labels):
     """
-    Draw a violin graph
+    Draw a box graph
     """
     models = ["Extractive", "LM Based"]
     d = {"Model": [], "Expression": [], "Time": []}
@@ -65,7 +67,7 @@ def draw_violin(grounding, labels, start_end_times, start_end_in_xaxis=False):
                     d["Time"].append(time)
 
     df = pd.DataFrame.from_dict(d)
-    ax = sns.violinplot(x="Expression", y="Time", hue="Model", data=df, order=labels, palette="muted")
+    ax = sns.boxplot(x="Expression", y="Time", hue="Model", data=df, order=labels, palette="muted")
     sns.move_legend(ax, "lower center", bbox_to_anchor=(.5, 1), ncol=3, title=None, frameon=False)
 
     # Set the times
@@ -76,28 +78,6 @@ def draw_violin(grounding, labels, start_end_times, start_end_in_xaxis=False):
     num_to_time.update({i: f"{i-12} pm" for i in range(13, 24)})
     num_to_time.update({i: f"{i - 24} am" for i in range(25, 36)})
     ax.set_yticklabels([num_to_time[num] for num in ax.get_yticks()])
-
-    # Annotate start and end times
-    if start_end_in_xaxis:
-        ext_start = {exp: num_to_time[start_end_times[0][exp][0]] for exp in labels}
-        ext_end = {exp: num_to_time[start_end_times[0][exp][1]] for exp in labels}
-        lm_start = {exp: num_to_time[start_end_times[1][exp][0]] for exp in labels}
-        lm_end = {exp: num_to_time[start_end_times[1][exp][1]] for exp in labels}
-        ax.set_xticklabels([f"{exp}:\nExt:{ext_start[exp]}-{ext_end[exp]}\nLM:{lm_start[exp]}-{lm_end[exp]}"
-                            for exp in labels])
-    else:
-        width = 0.42
-        base_x = -0.2
-        linestyles = ["dashed", "solid"]
-        for model_i, curr_start_end_times in enumerate(start_end_times):
-            for exp_i, exp in enumerate(labels):
-                start, end = curr_start_end_times[exp]
-                ax.plot([base_x + width * (2.38 * exp_i + model_i) - 0.16,
-                         base_x + width * (2.38 * exp_i + model_i) + 0.16],
-                        [start, start], color="black", linewidth=3, linestyle=linestyles[model_i])
-                ax.plot([base_x + width * (2.38 * exp_i + model_i) - 0.16,
-                         base_x + width * (2.38 * exp_i + model_i) + 0.16],
-                        [end, end], color="black", linewidth=3, linestyle=linestyles[model_i])
 
     return ax
 

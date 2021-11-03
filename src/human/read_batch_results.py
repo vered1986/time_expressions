@@ -1,5 +1,6 @@
 import os
 import json
+import logging
 import datetime
 import dateutil
 import argparse
@@ -13,6 +14,8 @@ from collections import Counter, defaultdict
 from matplotlib.collections import PolyCollection
 
 pd.set_option('max_columns', None)
+logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s', level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -29,23 +32,26 @@ def main():
 
             if os.path.exists(path):
                 df = pd.read_csv(path)
-                print(country, lang)
+                logger.info((country, lang))
                 curr, comments = load_batch_results(country, lang, df)
                 f_out.write(json.dumps(curr, ensure_ascii=False) + "\n")
-                print(comments)
-                print("\n")
+                logger.info(comments)
                 gold[country] = curr["main"]
 
-    plot_by_exp(gold)
-    plt.grid()
+    logger.info(f"Number of annotations: "
+                f"{dict([(country, sum(gold[country]['morning']['start'].values())) for country in gold.keys()])}")
+    fig, ax = plt.subplots(figsize=(5, 6), constrained_layout=True)
+    ax.set_axisbelow(True)
+    ax.yaxis.grid(color='gray', linestyle='dashed')
+    plot_by_exp(ax, gold)
+    fig.savefig(f"output/plots/gold_standard.png")
     plt.show()
 
 
-def plot_by_exp(distribution):
+def plot_by_exp(ax, distribution):
     """
     Plot the distribution of times
     """
-    fig, ax = plt.subplots(figsize=(8, 8), constrained_layout=True)
     expressions = ["morning", "noon", "afternoon", "evening", "night"]
     countries = list(distribution.keys())
 
@@ -96,22 +102,23 @@ def plot_by_exp(distribution):
     ax.autoscale()
 
     # Set the times
-    times = range(1, 36)
+    times = range(1, 38)
     ax.set_yticks(times)
     num_to_time = {12: "12 pm", 24: "12 am"}
     num_to_time.update({i: f"{i} am" for i in range(1, 12)})
     num_to_time.update({i: f"{i - 12} pm" for i in range(13, 24)})
     num_to_time.update({i: f"{i - 24} am" for i in range(25, 36)})
+    num_to_time.update({i: f"{i - 24} pm" for i in range(36, 48)})
     ax.set_yticklabels([num_to_time[num] for num in ax.get_yticks()], fontsize=10)
 
     ax.set_xticks([i + len(countries) * width for i in range(len(expressions))])
-    ax.set_xticklabels(expressions, fontsize=14)
+    ax.set_xticklabels(expressions, fontsize=10)
 
     # Create the legend
     legend_items = [Patch(
         facecolor=colors[country], hatch=hatches[country], edgecolor="black",
         label=country, ls="solid", lw=.5) for country in countries]
-    plt.legend(handles=legend_items, loc='upper left', fontsize=14, ncol=4)
+    plt.legend(handles=legend_items, loc='upper left', fontsize=9, ncol=4)
 
 
 def to_24hr(t):
@@ -155,7 +162,7 @@ def correct_am_pm(curr_data, exp, edge):
         else:
             new_times.extend([t_orig] * cnt)
 
-    print(f"{exp[0].upper()}{exp[1:]} {edge} corrected: {corrected} ({len(corrected)} items)")
+    logger.debug(f"{exp[0].upper()}{exp[1:]} {edge} corrected: {corrected} ({len(corrected)} items)")
     return new_times
 
 
@@ -168,13 +175,7 @@ def load_batch_results(country, lang, df):
     # Find how many rows we have in other languages and remove them if most of the annotations
     # are from the same language (e.g. US-en) but not if there is diversity
     languages = Counter(list(df['Answer.lang'].values))
-    print(f"Languages: {languages}")
-
-    if languages.most_common(1)[0][1] > 0.9 * (sum(languages.values())):
-        non_lang = df.loc[df["Answer.lang"] != lang.upper()]
-        df = df[~df.index.isin(non_lang.index)]
-        print(f"Removed {len(non_lang)} annotations not in {lang}: {Counter(list(non_lang['Answer.lang'].values))}")
-        languages = dict(languages.most_common(1))
+    logger.info(f"Languages: {languages}")
 
     # Load the data for the expressions in this list
     data = {exp: {"start": [h if ":" in h else f"{h}:00" for h in df[f"Answer.{exp}_start"].dropna().values],
