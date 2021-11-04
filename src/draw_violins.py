@@ -31,8 +31,7 @@ def main():
             grd["night"] = {h + 24 if h < 12 else h: vals for h, vals in grd["night"].items()}
 
             # Convert the probability into frequency distribution
-            if model == "lm_based":
-                grd = {exp: {h: int(score * 10000) for h, score in per_exp.items()} for exp, per_exp in grd.items()}
+            grd = {exp: {h: int(score * 100) for h, score in per_exp.items()} for exp, per_exp in grd.items()}
 
             start_and_end_times.append(start_end)
             grounding.append(grd)

@@ -1,5 +1,5 @@
 morning	सुबह
-noon	दोपहर
+noon	मध्याह्न|आकाशचोटी|शीर्षबिंदु
 afternoon	दोपहर
 evening	संध्या
 night	रात

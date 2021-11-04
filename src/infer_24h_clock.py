@@ -69,11 +69,10 @@ def create_ilp_model(grounding, expressions):
     create_constraints(model, hr_variables, start_variables, end_variables, counted_variables, expressions)
 
     # Create the objective function: maximize number of observations fit inside each range
-    # Normalize count per expression
-    cnt_by_var = {var: grounding[exp][int(var.VarName.split("_")[-1])]
-                  for exp, vars in hr_variables.items() for var in vars}
-    create_objective(model, hr_variables, counted_variables, cnt_by_var)
-    return model, hr_variables, start_variables, end_variables, cnt_by_var
+    relative_importance = {var: grounding[exp][int(var.VarName.split("_")[-1])] 
+                           for exp, vars in hr_variables.items() for var in vars}
+    create_objective(model, hr_variables, counted_variables, relative_importance)
+    return model, hr_variables, start_variables, end_variables, relative_importance
 
 
 def create_objective(model, hr_vars, counted_vars, relative_importance):
@@ -127,7 +126,7 @@ def create_constraints(model, hr_vars, start_vars, end_vars, counted_vars, expre
     """
     Create the model constraints
     """
-    # Set the within-range variables, and make sure that range < 12 hours.
+    # Set the within-range variables
     for exp, curr_vars in hr_vars.items():
         for hr_var in curr_vars:
             h = int(hr_var.VarName.split("_")[-1])
@@ -144,10 +143,9 @@ def create_constraints(model, hr_vars, start_vars, end_vars, counted_vars, expre
         # During the day, start < end
         if exp != "night":
             model.addConstr(start_vars[exp] + 1 <= end_vars[exp], f"c_{exp}_min_duration")
-        # At night, start > end, between 8 and 16 hours
+        # At night, start > end
         else:
-            model.addConstr(end_vars[exp] + 24 - start_vars[exp] >= 8, f"c_{exp}_min_duration")
-            model.addConstr(end_vars[exp] + 24 - start_vars[exp] <= 16, f"c_{exp}_max_duration")
+            model.addConstr(end_vars[exp] + 24 - start_vars[exp] >= 1, f"c_{exp}_min_duration")
             model.addConstr(start_vars["morning"] >= end_vars["night"], f"c_night_before_morning")
 
     # Sort expressions
