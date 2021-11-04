@@ -35,7 +35,7 @@ def find_time_expressions(corpus_file, cardinals, time_expressions, label_map, i
     a list of (time, time expressions, count) tuples
     """
     # Mapping from a cardinal to numeric value
-    numbers = {exp: i + 1 for i, exp in enumerate(cardinals)}
+    numbers = {num: i + 1 for i, num in enumerate(cardinals)}
     numbers.update({str(num): num for num in numbers.values()})
 
     # Count the co-occurrences of each cardinal with a time expression

@@ -69,7 +69,7 @@ def create_ilp_model(grounding, expressions):
     create_constraints(model, hr_variables, start_variables, end_variables, counted_variables, expressions)
 
     # Create the objective function: maximize number of observations fit inside each range
-    relative_importance = {var: grounding[exp][int(var.VarName.split("_")[-1])] 
+    relative_importance = {var: grounding[exp][int(var.VarName.split("_")[-1])]
                            for exp, vars in hr_variables.items() for var in vars}
     create_objective(model, hr_variables, counted_variables, relative_importance)
     return model, hr_variables, start_variables, end_variables, relative_importance
