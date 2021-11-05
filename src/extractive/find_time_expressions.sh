@@ -5,7 +5,10 @@ declare -a langs=("en" "fr" "de" "es" "ja" "ru" "it" "zh" "pt" "ar" "fa" "pl" "n
 
 for lang in "${langs[@]}"
 do
-  python -m src.extractive.find_time_expressions_in_wiki --lang ${lang} --wiki_dir ${wiki_dir};
-  python -m src.infer_24h_clock --lang ${lang} --out_dir output/extractive;
-  python -m src.extractive.wiki_se --lang ${lang} --wiki_dir ${wiki_dir};
+  python -m src.extractive.find_time_expressions_in_wiki --lang ${lang} --wiki_dir ${wiki_dir} --include_numerals;
+  python -m src.infer_24h_clock --lang ${lang} --out_dir output/extractive/numerals;
+  python -m src.extractive.find_time_expressions_in_wiki --lang ${lang} --wiki_dir ${wiki_dir} --include_cardinals;
+  python -m src.infer_24h_clock --lang ${lang} --out_dir output/extractive/cardinals;
+  python -m src.extractive.find_time_expressions_in_wiki --lang ${lang} --wiki_dir ${wiki_dir} --include_cardinals --include_numerals;
+  python -m src.infer_24h_clock --lang ${lang} --out_dir output/extractive/numerals_cardinals;
 done

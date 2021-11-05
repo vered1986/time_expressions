@@ -1,12 +1,10 @@
 import numpy as np
 
 
-def compute_distribution(unmasker, templates, cardinals, time_expressions_map):
+def compute_distribution(unmasker, templates, numbers_map, time_expressions_map):
     """
     Uses multilingual BERT to find the distribution of 12-hr clock hours for each time expression.
     """
-    cardinals_map = {i+1: [str(i+1), cardinals[i]] for i in range(12)}
-    cardinals_map_inv = {val: k for k, vals in cardinals_map.items() for val in vals}
     distributions = {}
 
     for en_exp, target_exps in time_expressions_map.items():
@@ -23,7 +21,7 @@ def compute_distribution(unmasker, templates, cardinals, time_expressions_map):
 
             # Check if it's a number and add to distribution
             for item in res:
-                num = cardinals_map_inv.get(item["token_str"], None)
+                num = numbers_map.get(item["token_str"], None)
                 if num is not None:
                     curr_distribution[num] += item["score"]
 
