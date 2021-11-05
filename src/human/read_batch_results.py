@@ -1,8 +1,6 @@
 import os
 import json
 import logging
-import datetime
-import dateutil
 import argparse
 import numpy as np
 import pandas as pd
@@ -12,6 +10,8 @@ from matplotlib.cm import get_cmap
 from matplotlib.patches import Patch
 from collections import Counter, defaultdict
 from matplotlib.collections import PolyCollection
+
+from src.common.times import to_24hr
 
 pd.set_option('max_columns', None)
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s', level=logging.INFO)
@@ -40,85 +40,12 @@ def main():
 
     logger.info(f"Number of annotations: "
                 f"{dict([(country, sum(gold[country]['morning']['start'].values())) for country in gold.keys()])}")
-    fig, ax = plt.subplots(figsize=(12.3, 4.1), constrained_layout=True)
+    fig, ax = plt.subplots(figsize=(10, 4), constrained_layout=True)
     ax.set_axisbelow(True)
     ax.xaxis.grid(color='gray', linestyle='dotted')
     plot_by_exp(ax, gold)
     fig.savefig(f"output/plots/gold_standard.png")
     plt.show()
-
-
-# def plot_by_exp(ax, distribution):
-#     """
-#     Plot the distribution of times
-#     """
-#     expressions = ["morning", "noon", "afternoon", "evening", "night"]
-#     countries = list(distribution.keys())
-#
-#     dist = {country:
-#         {exp: {f"{edge}_{stat}": to_24hr(distribution[country][exp][f"{edge}_{stat}"])
-#                   for edge in ["start", "end"] for stat in ["mean", "std"]}
-#             for exp in expressions}
-#             for country in countries}
-#
-#     for country in countries:
-#         for edge in ["start", "end"]:
-#             d = dist[country]["night"][f"{edge}_mean"]
-#             dist[country]["night"][f"{edge}_mean"] = d + 24 if d < 12 else d
-#
-#     width = .1
-#     verts = {country: [[
-#         (width * 2.1 * ctr_idx + exp_idx - width, dist[country][exp]["start_mean"]),
-#         (width * 2.1 * ctr_idx + exp_idx + width, dist[country][exp]["start_mean"]),
-#         (width * 2.1 * ctr_idx + exp_idx + width, dist[country][exp]["end_mean"]),
-#         (width * 2.1 * ctr_idx + exp_idx - width, dist[country][exp]["end_mean"]),
-#         (width * 2.1 * ctr_idx + exp_idx - width, dist[country][exp]["start_mean"])]
-#         for exp_idx, exp in enumerate(expressions)]
-#         for ctr_idx, country in enumerate(countries)}
-#
-#     hatches = ['//', '\\\\', '||', '--', '++', 'xx', 'oo', 'OO', '..', '**']
-#     hatches = {country: hatch for country, hatch in zip(countries, hatches)}
-#     colors = {country: color for country, color in zip(countries, get_cmap("Set3").colors)}
-#
-#     for country, curr_verts in verts.items():
-#         bars = PolyCollection(curr_verts, facecolors=colors[country], label=country)
-#         ax.add_collection(bars)
-#
-#         # Add hatches
-#         for vert in curr_verts:
-#             ax.add_patch(plt.Polygon(vert, closed=True, fill=False, hatch=hatches[country]))
-#
-#         # Draw error bars
-#         for exp_idx, exp in enumerate(expressions):
-#             y_start = curr_verts[exp_idx][0][1]
-#             y_end = curr_verts[exp_idx][2][1]
-#             x = (curr_verts[exp_idx][0][0] + curr_verts[exp_idx][1][0]) / 2.0
-#             start_std, end_std = dist[country][exp]["start_std"], dist[country][exp]["end_std"]
-#             ax.plot([x, x], [y_start - start_std / 2, y_start], color="black", linestyle="solid", linewidth=.5)
-#             ax.plot(x, y_start - start_std / 2, color="black", marker="_")
-#             ax.plot([x, x], [y_end, y_end + end_std / 2], color="black", linestyle="solid", linewidth=.5)
-#             ax.plot(x, y_end + end_std / 2, color="black", marker="_")
-#
-#     ax.autoscale()
-#
-#     # Set the times
-#     times = range(1, 38)
-#     ax.set_yticks(times)
-#     num_to_time = {12: "12 pm", 24: "12 am"}
-#     num_to_time.update({i: f"{i} am" for i in range(1, 12)})
-#     num_to_time.update({i: f"{i - 12} pm" for i in range(13, 24)})
-#     num_to_time.update({i: f"{i - 24} am" for i in range(25, 36)})
-#     num_to_time.update({i: f"{i - 24} pm" for i in range(36, 48)})
-#     ax.set_yticklabels([num_to_time[num] for num in ax.get_yticks()], fontsize=10)
-#
-#     ax.set_xticks([i + len(countries) * width for i in range(len(expressions))])
-#     ax.set_xticklabels(expressions, fontsize=10)
-#
-#     # Create the legend
-#     legend_items = [Patch(
-#         facecolor=colors[country], hatch=hatches[country], edgecolor="black",
-#         label=country, ls="solid", lw=.5) for country in countries]
-#     plt.legend(handles=legend_items, loc='upper left', fontsize=9, ncol=4)
 
 
 def plot_by_exp(ax, distribution):
@@ -151,7 +78,7 @@ def plot_by_exp(ax, distribution):
 
     hatches = ['//', 'oo', 'xx', '..', '\\\\', '||', '--', '++', 'OO', '**']
     hatches = {country: hatch for country, hatch in zip(countries, hatches)}
-    colors = {country: color for country, color in zip(countries, get_cmap("Set3").colors)}
+    colors = {country: color for country, color in zip(countries, get_cmap("tab20").colors)}
 
     for country, curr_verts in verts.items():
         bars = PolyCollection(curr_verts, facecolors=colors[country], label=country)
@@ -193,15 +120,6 @@ def plot_by_exp(ax, distribution):
         facecolor=colors[country], hatch=hatches[country], edgecolor="black",
         label=country, ls="solid", lw=.5) for country in countries]
     plt.legend(handles=legend_items, loc='upper left', fontsize=9, ncol=1)
-
-
-def to_24hr(t):
-    """
-    Convert time to a float
-    """
-    today = str(datetime.date.today())
-    t = dateutil.parser.parse(" ".join((today, t.replace(".", ""))))
-    return t.hour + t.minute/60.0
 
 
 def correct_am_pm(curr_data, exp, edge):
