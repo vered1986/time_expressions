@@ -17,31 +17,31 @@ def main():
 
     start_and_end_times, grounding = [], []
 
-    for model in ["extractive", "lm_based"]:
-        with open(f"output/{model}/{args.lang}_24.json") as f_in:
-            grd = json.load(f_in)
-            start_end = {exp: (grd[exp]["start"], grd[exp]["end"]) for exp in grd.keys()}
-            grd = {exp: {int(h): score for h, score in per_exp.items() if h not in {"start", "end"}}
-                   for exp, per_exp in grd.items()}
+    for type in ["numerals", "cardinals", "numerals_cardinals", "regex"]:
+        for model in ["extractive", "lm_based"]:
+            with open(f"output/{model}/{type}/{args.lang}_24.json") as f_in:
+                grd = json.load(f_in)
+                start_end = {exp: (grd[exp]["start"], grd[exp]["end"]) for exp in grd.keys()}
+                grd = {exp: {int(h): score for h, score in per_exp.items() if h not in {"start", "end"}}
+                       for exp, per_exp in grd.items()}
 
-            # Night: add 24 to the hours < 12
-            if start_end["night"][1] < 12:
-                start_end["night"] = (start_end["night"][0], start_end["night"][1] + 24)
+                # Night: add 24 to the hours < 12
+                if start_end["night"][1] < 12:
+                    start_end["night"] = (start_end["night"][0], start_end["night"][1] + 24)
 
-            grd["night"] = {h + 24 if h < 12 else h: vals for h, vals in grd["night"].items()}
+                grd["night"] = {h + 24 if h < 12 else h: vals for h, vals in grd["night"].items()}
 
-            # Convert the probability into frequency distribution
-            grd = {exp: {h: int(score * 100) for h, score in per_exp.items()} for exp, per_exp in grd.items()}
+                # Convert the probability into frequency distribution
+                grd = {exp: {h: int(score * 100) for h, score in per_exp.items()} for exp, per_exp in grd.items()}
 
-            start_and_end_times.append(start_end)
+                start_and_end_times.append(start_end)
             grounding.append(grd)
 
-    labels = [l for l in labels if l in grounding[0]]
-    title = f"Grounding of Time Expressions in {args.lang}"
-    ax = draw_violin(grounding, labels, start_and_end_times)
-    fig = ax.get_figure()
-    fig.savefig(f"output/plots/{args.lang}.png")
-    fig.suptitle(title, fontsize=24)
+        labels = [l for l in labels if l in grounding[0]]
+        ax = draw_violin(grounding, labels, start_and_end_times)
+        fig = ax.get_figure()
+        fig.savefig(f"output/plots/{type}/{args.lang}.png")
+
     fig.show()
 
 

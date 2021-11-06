@@ -12,7 +12,7 @@ expressions = ["morning", "noon", "afternoon", "evening", "night"]
 exp2id = {exp: i for i, exp in enumerate(expressions)}
 display_model = {"lm_based": "LM", "extractive": "Extractive"}
 display_type = {"24": "Dist", "start_end": "SE"}
-display_numbers = {"numerals": "N", "cardinals": "C", "numerals_cardinals": "NC"}
+display_numbers = {"numerals": "N", "cardinals": "C", "numerals_cardinals": "NC", "regex": "T"}
 
 
 def main():
@@ -34,7 +34,7 @@ def main():
 
         for model in ["extractive", "lm_based"]:
             for type in ["24", "start_end"]:
-                for numbers in ["numerals", "cardinals", "numerals_cardinals"]:
+                for numbers in ["numerals", "cardinals", "numerals_cardinals", "regex"]:
                     file = f"output/{model}/{numbers}/{lang}_{type}.json"
                     if not os.path.exists(file):
                         continue
