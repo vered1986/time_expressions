@@ -32,6 +32,9 @@ def main():
         # Compute the gold label of each minute in the day
         min_gold = assign_minutes(gold, exp2id)
 
+        # Remove evening for Brazil
+        min_gold = [x if x != exp2id["evening"] else None for x in min_gold]
+
         for model in ["extractive", "lm_based"]:
             for type in ["24", "start_end"]:
                 for numbers in ["numerals", "cardinals", "numerals_cardinals", "regex"]:
