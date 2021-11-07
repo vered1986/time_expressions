@@ -12,14 +12,13 @@ expressions = ["morning", "noon", "afternoon", "evening", "night"]
 exp2id = {exp: i for i, exp in enumerate(expressions)}
 display_model = {"lm_based": "LM", "extractive": "Extractive"}
 display_type = {"24": "Dist", "start_end": "SE"}
-display_numbers = {"numerals": "N", "cardinals": "C", "numerals_cardinals": "NC", "regex": "T"}
 
 
 def main():
     # Load the dataset
     gold_standard = [json.loads(line) for line in open("data/dataset.jsonl")]
     gold_standard = {ex["country"]: ex for ex in gold_standard}
-    results = {"Language": [], "Model": [], "Type": [], "Numbers": [], "Accuracy": [], "Start Diff": [], "End Diff": []}
+    results = {"Language": [], "Model": [], "Type": [], "Accuracy": [], "Start Diff": [], "End Diff": []}
 
     # Iterate over languages
     for lang, country in [("en", "US"), ("hi", "India"), ("it", "Italy"), ("pt", "Brazil")]:
@@ -37,43 +36,41 @@ def main():
 
         for model in ["extractive", "lm_based"]:
             for type in ["24", "start_end"]:
-                for numbers in ["numerals", "cardinals", "numerals_cardinals", "regex"]:
-                    file = f"output/{model}/{numbers}/{lang}_{type}.json"
-                    if not os.path.exists(file):
-                        continue
+                file = f"output/{model}/{lang}_{type}.json"
+                if not os.path.exists(file):
+                    continue
 
-                    with open(file) as f_in:
-                        dist = json.load(f_in)
+                with open(file) as f_in:
+                    dist = json.load(f_in)
 
-                    # Get the start and end times
-                    if type == "24":
-                        se = {exp: (dist[exp]["start"], dist[exp]["end"]) for exp in dist.keys()}
-                    else:
-                        se = {exp: (
-                            int(list(sorted(dist["start"][exp].items(), key=lambda x: x[1], reverse=True))[0][0]),
-                            int(list(sorted(dist["end"][exp].items(), key=lambda x: x[1], reverse=True))[0][0]))
-                            for exp in dist["start"].keys()}
+                # Get the start and end times
+                if type == "24":
+                    se = {exp: (dist[exp]["start"], dist[exp]["end"]) for exp in dist.keys()}
+                else:
+                    se = {exp: (
+                        int(list(sorted(dist["start"][exp].items(), key=lambda x: x[1], reverse=True))[0][0]),
+                        int(list(sorted(dist["end"][exp].items(), key=lambda x: x[1], reverse=True))[0][0]))
+                        for exp in dist["start"].keys()}
 
-                    preds = {exp: (f"{int(s)}:{int((s - int(s)) * 60):02d}", f"{int(e)}:{int((e - int(e)) * 60):02d}")
-                             for exp, (s, e) in se.items()}
+                preds = {exp: (f"{int(s)}:{int((s - int(s)) * 60):02d}", f"{int(e)}:{int((e - int(e)) * 60):02d}")
+                         for exp, (s, e) in se.items()}
 
-                    min_pred = assign_minutes(preds, exp2id)
+                min_pred = assign_minutes(preds, exp2id)
 
-                    accuracy = np.mean([min_pred[i] == min_gold[i] for i in range(1444) if min_gold[i] is not None]) * 100
-                    diff_start = np.mean([abs(s - to_24hr(curr_gold[exp]["start_mean"])) for exp, (s, e) in se.items()])
-                    diff_end = np.mean([abs(e - to_24hr(curr_gold[exp]["end_mean"])) for exp, (s, e) in se.items()])
+                accuracy = np.mean([min_pred[i] == min_gold[i] for i in range(1444) if min_gold[i] is not None]) * 100
+                diff_start = np.mean([abs(s - to_24hr(curr_gold[exp]["start_mean"])) for exp, (s, e) in se.items()])
+                diff_end = np.mean([abs(e - to_24hr(curr_gold[exp]["end_mean"])) for exp, (s, e) in se.items()])
 
-                    results["Language"].append(lang.upper())
-                    results["Model"].append(display_model[model])
-                    results["Type"].append(display_type[type])
-                    results["Numbers"].append(display_numbers[numbers])
-                    results["Accuracy"].append(accuracy)
-                    results["Start Diff"].append(diff_start)
-                    results["End Diff"].append(diff_end)
+                results["Language"].append(lang.upper())
+                results["Model"].append(display_model[model])
+                results["Type"].append(display_type[type])
+                results["Accuracy"].append(accuracy)
+                results["Start Diff"].append(diff_start)
+                results["End Diff"].append(diff_end)
 
     df = pd.DataFrame.from_dict(results)
-    df.index = pd.MultiIndex.from_frame(df[["Language", "Model", "Type", "Numbers"]])
-    df = df.drop(["Language", "Model", "Type", "Numbers"], axis=1)
+    df.index = pd.MultiIndex.from_frame(df[["Language", "Model", "Type"]])
+    df = df.drop(["Language", "Model", "Type"], axis=1)
     print(df.to_latex(float_format="%.1f", bold_rows=True, multirow=True, position="t", label="tab:results", caption=""))
 
 
