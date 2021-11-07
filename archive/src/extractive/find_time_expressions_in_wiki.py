@@ -14,27 +14,50 @@ def main():
     parser.add_argument("--wiki_dir", default=".", type=str, required=False, help="Directory for the wiki files")
     parser.add_argument("--lang", default="en", type=str, required=False, help="Language code")
     parser.add_argument("--out_dir", default="output/extractive", type=str, required=False, help="Output directory")
+    parser.add_argument("--include_cardinals", action="store_true", help="Whether to include cardinals")
+    parser.add_argument("--include_numerals", action="store_true", help="Whether to include numerals")
+    parser.add_argument("--include_time_regex", action="store_true", help="Whether to include time regex")
     args = parser.parse_args()
+
+    # At least one of cardinals or numerals should be true.
+    valid_input = ((args.include_cardinals or args.include_numerals) and not args.include_time_regex) or \
+                  (not (args.include_cardinals or args.include_numerals) and args.include_time_regex)
+    if not valid_input:
+        raise ValueError("At least one of cardinals or numerals, or time regex should be true.")
 
     corpus_file = f"{args.wiki_dir}/{args.lang}_wiki.tar.gz"
     time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{args.lang}.txt")]
 
-    regex24 = "(2[0-3]|[01]?[0-9]):([0-5]?[0-9])"
-    regex12 = "(0?[1-9]|1[0-2]):([0-5]\d)\s?((?:A|P)\.?M\.?)"
-    time_regex = re.compile("(" + "|".join([regex12, regex24]) + ")")
+    # Build the numbers map
+    numbers_map = {}
+    time_regex = None
+
+    if args.include_cardinals:
+        cardinals = [line.strip() for line in open(f"data/cardinals/{args.lang}.txt")]
+        numbers_map.update({num: i + 1 for i, num in enumerate(cardinals)})
+    if args.include_numerals:
+        numbers_map.update({str(num): num for num in range(1, 13)})
+    if args.include_time_regex:
+        regex24 = "(2[0-3]|[01]?[0-9]):([0-5]?[0-9])"
+        regex12 = "(0?[1-9]|1[0-2]):([0-5]\d)\s?((?:A|P)\.?M\.?)"
+        time_regex = re.compile("(" + "|".join([regex12, regex24]) + ")")
 
     is_asian = args.lang in {"ja", "zh"}
     label_map = {exp: time_expressions[i][0] for i in range(len(time_expressions))
                  for exp in time_expressions[i][1].split("|")}
 
     # Compute the distribution
-    grounding = find_time_expressions(corpus_file, time_regex, time_expressions, label_map, is_asian)
+    grounding = find_time_expressions(corpus_file, numbers_map, time_regex, time_expressions, label_map, is_asian)
 
-    with open(f"{args.out_dir}/{args.lang}_24.json", "w") as f_out:
+    mode = "_".join((["numerals"] if args.include_numerals else []) +
+                    (["cardinals"] if args.include_cardinals else []) +
+                    (["regex"] if args.include_time_regex else []))
+    filename = f"{args.lang}_24.json" if args.include_time_regex else f"{args.lang}.json"
+    with open(f"{args.out_dir}/{mode}/{filename}", "w") as f_out:
         json.dump(grounding, f_out)
 
 
-def find_time_expressions(corpus_file, time_regex, time_expressions, label_map, is_asian):
+def find_time_expressions(corpus_file, numbers_map, time_regex, time_expressions, label_map, is_asian):
     """
     Finds time expressions in the corpus file and returns
     a list of (time, time expressions, count) tuples
@@ -42,10 +65,19 @@ def find_time_expressions(corpus_file, time_regex, time_expressions, label_map, 
     # Count the co-occurrences of each cardinal with a time expression
     grounding = defaultdict(lambda: defaultdict(int))
 
+    # Regex to find sentences with numbers or cardinals
+    if len(numbers_map) > 0:
+        time_template = re.compile("(" + "|".join([rf"\b{num}\b" for num in numbers_map.keys()]) + ")")
+    else:
+        time_template = time_regex
+
     def get_time(s):
-        today = str(datetime.date.today())
-        time = parser.parse(" ".join((today, s)))
-        return time.hour
+        if len(numbers_map) > 0:
+            return numbers_map.get(s, None)
+        else:
+            today = str(datetime.date.today())
+            time = parser.parse(" ".join((today, s)))
+            return time.hour
 
     # Regex to find sentences with time expressions. Each entry may contain multiple surface forms.
     time_exp_mapping = {t: entry[1].split("|")[0] for entry in time_expressions for t in entry[1].split("|")}
@@ -86,7 +118,7 @@ def find_time_expressions(corpus_file, time_regex, time_expressions, label_map, 
 
                 # Found a cardinal immediately around the time expression
                 around = get_surrounding_words(match, sent, is_asian)
-                match = time_regex.search(around, re.IGNORECASE)
+                match = time_template.search(around, re.IGNORECASE)
 
                 if match is not None:
                     time = get_time(match.group(0).strip())
