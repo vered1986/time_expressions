@@ -1,5 +1,6 @@
-<time_exp> के [MASK] बज रहे थे।
 <time_exp> के [MASK] बजे हैं।
-<time_exp> के करीब [MASK] बज रहे थे।
-<time_exp> हो चुकी है, करीब [MASK] बजे।
-मैं <time_exp> खाली हूँ, चलो [MASK] बजे मिलते हैं।
+यह <time_exp> [MASK] बजे हुआ।
+यह <time_exp> [MASK] बजे होगा।
+हर <time_exp> [MASK] बजे।
+यह कल <time_exp> [MASK] बजे हुआ।
+<time_exp> के [MASK] बज रहे थे।

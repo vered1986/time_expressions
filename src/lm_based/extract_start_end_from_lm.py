@@ -22,17 +22,16 @@ def main():
         templates = json.load(open(f"data/templates/start_end/{lang}.json"))
         ampm_map = None
 
-        # Build the numbers map
-        numbers_map = {}
-        templates = {edge: [t.replace("[MASK]", "[MASK]:00") for t in curr_templates]
-                     for edge, curr_templates in templates.items()}
-
         # This language uses 12hr clock
         if os.path.exists(f"data/ampm/{lang}.json"):
             ampm_map = json.load(open(f"data/ampm/{lang}.json"))
-            numbers_map.update({str(num): num for num in range(1, 13)})
+            max_num = 12
         else:
-            numbers_map.update({str(num): num for num in range(1, 25)})
+            max_num = 23
+
+        # Build the numbers map
+        numbers_map = {str(num): num for num in range(0, max_num + 1)}
+        numbers_map.update({"0" + str(num): num for num in range(0, 10)})
 
         time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{lang}.txt")]
         time_expressions_map = {en: other.split("|") for en, other in time_expressions}
@@ -43,7 +42,9 @@ def main():
             grounding[edge] = compute_distribution(
                 unmasker, curr_templates, numbers_map, time_expressions_map, ampm_map)
 
-        with open(f"{args.out_dir}/regex/{lang}_start_end.json", "w") as f_out:
+        grounding = {exp: {edge: grounding[edge][exp] for edge in ["start", "end"]} for exp in grounding["end"].keys()}
+
+        with open(f"{args.out_dir}/{lang}_start_end.json", "w") as f_out:
             json.dump(grounding, f_out)
 
 

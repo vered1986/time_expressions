@@ -1,5 +1,6 @@
-كانت الساعة [MASK] <time_exp>ا.
-إنها [MASK] <time_exp>ا.
-كان ال<time_exp> ، حوالي [MASK].
-إنه ال<time_exp> ، حوالي [MASK].
-أنا متفرغ في ال<time_exp> ، لنلتقي في [MASK].
+كانت الساعة [MASK] <time_exp>ًا.
+كل <time_exp> الساعة [MASK].
+الساعة [MASK] <time_exp>ًا.
+حدث ذلك في ال<time_exp> ، الساعة [MASK].
+حدث ذلك أمس في ال<time_exp> ، الساعة [MASK].
+سيحدث ذلك في ال<time_exp> ، الساعة [MASK].

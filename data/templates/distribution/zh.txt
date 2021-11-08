@@ -1,5 +1,6 @@
-已經是<time_exp> [MASK] 點了。
-現在是<time_exp> [MASK] 點。
-已經是<time_exp>了，[MASK]點左右。
-現在是<time_exp>，大約[MASK]點鐘。
-我<time_exp>有空，我們[MASK]點見。
+它发生在<time_exp>，[MASK]。
+现在是<time_exp> [MASK]。
+时间是<time_exp> [MASK]。
+每天<time_exp> [MASK]。
+它发生在昨天<time_exp> [MASK]。
+它将在<time_exp> [MASK] 发生。

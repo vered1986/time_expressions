@@ -1,5 +1,6 @@
+Stane se tak <time_exp> v [MASK].
+Stalo se to včera <time_exp> v [MASK].
 Bylo [MASK] <time_exp>.
-Je [MASK] hodin <time_exp>.
-Bylo <time_exp>, kolem [MASK].
-Je <time_exp>, kolem [MASK].
-<time_exp> mám volno, sejdeme se v [MASK].
+Stalo se to <time_exp>, v [MASK].
+Je [MASK] <time_exp>.
+Každé <time_exp> v [MASK].

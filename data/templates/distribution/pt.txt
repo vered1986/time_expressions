@@ -1,5 +1,6 @@
-Eram [MASK] da <time_exp>.
 São [MASK] da <time_exp>.
-Era de <time_exp>, por volta das [MASK].
-É de <time_exp>, por volta das [MASK].
-Estou livre de <time_exp>, vamos nos encontrar às [MASK].
+Acontecerá pela <time_exp>, às [MASK].
+Todas as <time_exp>s às [MASK].
+Eram [MASK] da <time_exp>.
+Aconteceu pela <time_exp>, às [MASK].
+Aconteceu ontem pela <time_exp>, às [MASK].

@@ -1,5 +1,6 @@
 Erano le [MASK] del <time_exp>.
 Sono le [MASK] del <time_exp>.
-Era <time_exp>, verso le [MASK].
-È <time_exp>, verso le [MASK].
-Domani <time_exp> sono libero, ci vediamo alle [MASK].
+È successo ieri <time_exp>, alle [MASK].
+È successo sta<time_exp>, alle [MASK].
+Accadrà al <time_exp>, alle [MASK].
+Ogni <time_exp> alle [MASK].

@@ -1,5 +1,6 @@
-Eren les [MASK] del <time_exp>.
+Cada <time_exp> a les [MASK].
+Va passar al <time_exp>, a les [MASK].
+Va passar ahir al <time_exp>, a les [MASK].
 Són les [MASK] del <time_exp>.
-Era el <time_exp>, cap a les [MASK].
-És <time_exp>, cap a les [MASK].
-Estic lliure al <time_exp>, ens veiem a les [MASK].
+Serà al <time_exp>, a les [MASK].
+Eren les [MASK] del <time_exp>.

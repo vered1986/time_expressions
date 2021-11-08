@@ -1,5 +1,6 @@
+Elke <time_exp> om [MASK] uur.
 Het was [MASK] uur in de <time_exp>.
+Het zal <time_exp><time_exp> om [MASK] uur gebeuren.
+Het gebeurde gisteren in de <time_exp>, om [MASK] uur.
 Het is [MASK] uur in de <time_exp>.
-Het was <time_exp>, rond [MASK] uur.
-Het is <time_exp>, rond [MASK] uur.
-Ik ben vrij in de <time_exp>, laten we afspreken om [MASK] uur.
+Het gebeurde in de <time_exp>, om [MASK] uur.

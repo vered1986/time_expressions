@@ -1,5 +1,6 @@
-<time_exp> [MASK]'du.
-Saat <time_exp>ın [MASK]'u.
-<time_exp> oldu, [MASK] civarı.
-<time_exp>, [MASK] civarı.
-<time_exp> boşum, [MASK]'da buluşalım.
+<time_exp> saat [MASK]'dı.
+<time_exp> saat [MASK].
+Dün <time_exp> saat [MASK]'da oldu.
+Olay <time_exp> [MASK]'da oldu.
+<time_exp> saat [MASK]'da gerçekleşecek.
+Her <time_exp> [MASK]'da.

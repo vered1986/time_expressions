@@ -1,5 +1,6 @@
 Đã [MASK] giờ <time_exp>.
 Bây giờ là [MASK] giờ <time_exp>.
-Đó là buổi <time_exp>, khoảng [MASK] giờ.
-Bây giờ là buổi <time_exp>, khoảng [MASK] giờ.
-<time_exp> em rảnh, [MASK] h gặp nhau nhé.
+Nó đã xảy ra vào ngày hôm qua vào <time_exp>, lúc [MASK].
+Nó xảy ra vào <time_exp>, lúc [MASK].
+Nó sẽ xảy ra vào <time_exp>, lúc [MASK].
+Mỗi <time_exp> lúc [MASK].

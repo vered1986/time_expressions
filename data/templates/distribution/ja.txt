@@ -1,5 +1,6 @@
 <time_exp>[MASK]時でした。
 <time_exp>[MASK]時です。
-<time_exp>[MASK]時ごろでした。
-<time_exp>[MASK]時頃です。
-<time_exp>は暇です。[MASK]時に会いましょう。
+昨日の<time_exp>[MASK]時に起こった。
+それは<time_exp>の[MASK]に起こりました。
+<time_exp>[MASK]時に発生します。
+毎<time_exp>[MASK]。

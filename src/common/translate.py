@@ -1,4 +1,5 @@
 import os
+import re
 import logging
 
 from google.cloud import translate_v2 as translate
@@ -16,7 +17,7 @@ def translate_text(translate_client, source, target, texts):
     return list({res["translatedText"] for res in result})
 
 
-def translate_time_expression_templates(translate_client, en_templates, target, hr=9, exp="morning"):
+def translate_time_expression_templates(translate_client, en_templates, target, hr="9:00", exp="morning"):
     """
     Translate all the texts in English to the target language.
     """
@@ -27,8 +28,7 @@ def translate_time_expression_templates(translate_client, en_templates, target, 
     target_texts = translate_text(translate_client, "en", target, en_templates)
 
     # Replace the hour with the place holder
-    hr_cardinal = [line.strip() for line in open(f"data/cardinals/{target}.txt")][hr-1]
-    target_templates = [text.replace(hr_cardinal, "[MASK]").replace(str(hr), "[MASK]") for text in target_texts]
+    target_templates = [re.sub(r"9[:h.][0]*", "[MASK]", text) for text in target_texts]
 
     # Replace the time expression
     target_exps = dict([line.strip().split("\t") for line in open(f"data/time_expressions/{target}.txt")])[exp]

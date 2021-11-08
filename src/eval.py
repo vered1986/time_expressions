@@ -44,14 +44,7 @@ def main():
                     dist = json.load(f_in)
 
                 # Get the start and end times
-                if type == "24":
-                    se = {exp: (dist[exp]["start"], dist[exp]["end"]) for exp in dist.keys()}
-                else:
-                    se = {exp: (
-                        int(list(sorted(dist["start"][exp].items(), key=lambda x: x[1], reverse=True))[0][0]),
-                        int(list(sorted(dist["end"][exp].items(), key=lambda x: x[1], reverse=True))[0][0]))
-                        for exp in dist["start"].keys()}
-
+                se = {exp: (dist[exp]["start"], dist[exp]["end"]) for exp in dist.keys()}
                 preds = {exp: (f"{int(s)}:{int((s - int(s)) * 60):02d}", f"{int(e)}:{int((e - int(e)) * 60):02d}")
                          for exp, (s, e) in se.items()}
 

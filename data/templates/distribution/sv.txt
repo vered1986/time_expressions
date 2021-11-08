@@ -1,5 +1,6 @@
-Klockan var [MASK] på <time_exp>.
-Klockan är [MASK] på <time_exp>.
-Det var <time_exp>, runt [MASK].
-Det är <time_exp>, runt [MASK].
-Jag är ledig på <time_exp>, vi ses kl [MASK].
+Varje <time_exp> klockan [MASK].
+Klockan var [MASK] på <time_exp>en.
+Klockan är [MASK] på <time_exp>en.
+Det hände på <time_exp>en, klockan [MASK].
+Det hände igår på <time_exp>en, klockan [MASK].
+Det kommer att ske på <time_exp>en, klockan [MASK].

@@ -7,6 +7,11 @@ def compute_distribution(unmasker, templates, numbers_map, time_expressions_map,
     """
     distributions = {}
 
+    # Allow for various time formats: 9:00, 9.00, 9h00, and 9.
+    templates += [t.replace("[MASK]", "[MASK]:00") for t in templates] + \
+                 [t.replace("[MASK]", "[MASK].00") for t in templates] + \
+                 [t.replace("[MASK]", "[MASK]h00") for t in templates]
+
     for en_exp, target_exps in time_expressions_map.items():
         # Create the templates
         curr_templates = [t.replace("<time_exp>", exp) for exp in target_exps for t in templates]
@@ -14,7 +19,7 @@ def compute_distribution(unmasker, templates, numbers_map, time_expressions_map,
         # Initialize the distribution
         distribution = {i: 0 for i in numbers_map.values()}
         if ampm_map is not None:
-            distribution = {i: 0 for i in range(1, 25)}
+            distribution = {i: 0 for i in range(0, 24)}
 
         # Go over all the templates
         for template in curr_templates:
@@ -36,7 +41,7 @@ def compute_distribution(unmasker, templates, numbers_map, time_expressions_map,
                         if v == "am":
                             distribution[i] += curr_distribution[i] * am_pm[k]
                         else:
-                            distribution[i+12] += curr_distribution[i] * am_pm[k]
+                            distribution[(i+12)%24] += curr_distribution[i] * am_pm[k]
             else:
                 for i in curr_distribution.keys():
                     distribution[i] += curr_distribution[i]
@@ -53,7 +58,7 @@ def unmask(unmasker, template, values_to_consider, val_map_fn):
     """
     Returns the distribution over numbers for a single template
     """
-    res = unmasker(template, top_k=1000)
+    res = unmasker(template, top_k=500)
     dist = {val_map_fn(i): 0 for i in values_to_consider}
 
     # Check if it's a number and add to distribution

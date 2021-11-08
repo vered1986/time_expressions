@@ -19,20 +19,19 @@ def main():
     # Iterate over languages
     for file in os.listdir("data/templates/distribution"):
         lang = file.replace(".txt", "")
-        print(lang)
         templates = [line.strip() for line in open(f"data/templates/distribution/{lang}.txt")]
         ampm_map = None
-
-        # Build the numbers map
-        numbers_map = {}
-        templates = [t.replace("[MASK]", "[MASK]:00") for t in templates]
 
         # This language uses 12hr clock
         if os.path.exists(f"data/ampm/{lang}.json"):
             ampm_map = json.load(open(f"data/ampm/{lang}.json"))
-            numbers_map.update({str(num): num for num in range(1, 13)})
+            max_num = 12
         else:
-            numbers_map.update({str(num): num for num in range(1, 25)})
+            max_num = 23
+
+        # Build the numbers map
+        numbers_map = {str(num): num for num in range(0, max_num + 1)}
+        numbers_map.update({"0" + str(num): num for num in range(0, 10)})
 
         time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{lang}.txt")]
         time_expressions_map = {en: other.split("|") for en, other in time_expressions}

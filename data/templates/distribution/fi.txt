@@ -1,5 +1,6 @@
-Kello oli [MASK] <time_exp>lla.
+Se tapahtui <time_exp>lla klo [MASK].
 Kello on [MASK] <time_exp>lla.
-Oli <time_exp>, noin [MASK].
-On <time_exp>, noin kello [MASK].
-Olen vapaa <time_exp>lla, tavataan klo [MASK].
+Kello oli [MASK] <time_exp>lla.
+Se tapahtui eilen <time_exp>lla, klo [MASK].
+Joka <time_exp> klo [MASK].
+Se tapahtuu <time_exp>lla, klo [MASK].

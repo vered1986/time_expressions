@@ -1,5 +1,6 @@
-<time_exp> [MASK] volt.
-<time_exp> [MASK] van.
-<time_exp> volt, [MASK] körül.
-<time_exp> van, [MASK] körül.
-<time_exp> szabad vagyok, [MASK]-kor találkozunk.
+<time_exp> [MASK] óra volt.
+<time_exp> [MASK] óra van.
+Tegnap <time_exp> [MASK] órakor történt.
+<time_exp>, [MASK] órakor történt.
+<time_exp>, [MASK]-kor fog megtörténni.
+Minden <time_exp> [MASK]-kor.

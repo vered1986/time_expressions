@@ -1,5 +1,6 @@
 It was [MASK] in the <time_exp>.
 It is [MASK] in the <time_exp>.
-It was <time_exp>, around [MASK].
-It is <time_exp>, around [MASK].
-I'm free in the <time_exp>, let's meet at [MASK].
+It happened yesterday in the <time_exp>, at [MASK].
+It happened in the <time_exp>, at [MASK].
+It will happen in the <time_exp>, at [MASK].
+Every <time_exp> at [MASK].

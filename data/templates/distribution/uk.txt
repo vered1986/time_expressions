@@ -1,5 +1,6 @@
 Була [MASK] <time_exp>.
 Зараз [MASK] <time_exp>.
-Був <time_exp>, близько [MASK].
-Зараз <time_exp>, близько [MASK].
-<time_exp> я вільний, зустрінемось о [MASK].
+Це сталося вчора <time_exp>, о [MASK].
+Це сталося <time_exp>, о [MASK].
+Це відбудеться <time_exp>, о [MASK].
+Що<time_exp> о [MASK].

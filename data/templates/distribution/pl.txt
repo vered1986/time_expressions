@@ -1,5 +1,6 @@
+Codziennie <time_exp> o [MASK].
 Była [MASK] <time_exp>.
+Stało się to <time_exp> o [MASK].
+Stanie się to <time_exp> o [MASK].
 Jest [MASK] <time_exp>.
-Był <time_exp>, około [MASK].
-Jest <time_exp>, około [MASK].
-Jestem wolny <time_exp>, spotkajmy się o [MASK].
+Stało się to wczoraj <time_exp> o [MASK].

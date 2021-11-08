@@ -1,5 +1,6 @@
-Saat itu jam [MASK] <time_exp>.
+Saat itu pukul [MASK] <time_exp>.
+Kejadiannya kemarin <time_exp>, jam [MASK].
 Ini jam [MASK] <time_exp>.
-Saat itu <time_exp>, sekitar jam [MASK].
-Sudah <time_exp>, sekitar jam [MASK].
-Saya bebas di <time_exp> hari, mari kita bertemu jam [MASK].
+Setiap <time_exp> pukul [MASK].
+Itu akan terjadi di <time_exp> hari, jam [MASK].
+Itu terjadi di <time_exp> hari, jam [MASK].

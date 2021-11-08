@@ -1,5 +1,6 @@
 ساعت [MASK] <time_exp> بود.
+<time_exp> ساعت [MASK] انجام می شود.
 ساعت [MASK] <time_exp> است.
-<time_exp> بود حدود ساعت [MASK]
-<time_exp> است، حدود ساعت [MASK].
-من <time_exp> آزادم، بیا ساعت [MASK] همدیگر را ببینیم.
+هر روز <time_exp> ساعت [MASK].
+دیروز <time_exp> ساعت [MASK] رخ داد.
+<time_exp> ساعت [MASK] اتفاق افتاد.

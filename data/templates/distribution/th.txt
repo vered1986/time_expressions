@@ -1,5 +1,4 @@
-เวลา [MASK] โมง<time_exp>
-เวลา [MASK] โมง<time_exp>
-เป็นเวลา<time_exp>ประมาณ [MASK] โมง
-เป็นเวลา<time_exp>ประมาณ [MASK] โมง
-ฉันว่างตอน<time_exp> เจอกันตอน [MASK] โมง
+เหตุเกิดเมื่อ<time_exp>วานนี้ เวลา [MASK] น.
+เหตุเกิดเมื่อช่วง<time_exp> เวลา [MASK] น.
+จะเกิดขึ้นในตอน<time_exp> เวลา [MASK] น.
+ทุก<time_exp> เวลา [MASK] น.
