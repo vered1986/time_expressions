@@ -1,5 +1,5 @@
-morning	morgen
+morning	morgen|vormittag|frühe
 noon	mittag
 afternoon	nachmittag
-evening	abend
-night	nacht
+evening	abend|abendlich
+night	nacht|nächtlich|übernachtung

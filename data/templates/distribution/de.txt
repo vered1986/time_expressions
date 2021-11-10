@@ -1,6 +1,6 @@
-Es geschah gestern <time_exp>s um [MASK] Uhr.
-Es wird <time_exp>s um [MASK] Uhr passieren.
-Es war [MASK] Uhr <time_exp>s.
-Es ist [MASK] Uhr <time_exp>s.
-Es geschah <time_exp>s um [MASK] Uhr.
+Es geschah gestern <time_exp> um [MASK] Uhr.
+Es wird <time_exp> um [MASK] Uhr passieren.
+Es war [MASK] Uhr <time_exp>.
+Es ist [MASK] Uhr <time_exp>.
+Es geschah <time_exp> um [MASK] Uhr.
 Jeden Morgen um [MASK] <time_exp>

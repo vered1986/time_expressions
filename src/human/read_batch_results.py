@@ -35,7 +35,7 @@ def main():
                 logger.info((country, lang))
                 curr, comments = load_batch_results(country, lang, df)
                 f_out.write(json.dumps(curr, ensure_ascii=False) + "\n")
-                logger.info(comments)
+                logger.info("\n".join(["\t".join((str(cnt), comment)) for comment, cnt in comments.items()]))
                 gold[country] = curr["main"]
 
     logger.info(f"Number of annotations: "
@@ -102,7 +102,6 @@ def plot_by_exp(ax, distribution):
     ax.autoscale()
 
     # Set the times
-    times = range(3, 39)
     ax.set_xticks(range(3, 39, 2))
     ax.set_xlim([3, 38])
     num_to_time = {12: "12pm", 24: "12am"}
