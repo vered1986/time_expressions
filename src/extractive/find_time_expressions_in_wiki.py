@@ -2,11 +2,9 @@ import re
 import gzip
 import tqdm
 import json
-import datetime
 import argparse
 
 from dateutil import parser
-from collections import defaultdict
 
 
 def main():
@@ -18,21 +16,17 @@ def main():
 
     corpus_file = f"{args.wiki_dir}/{args.lang}_wiki.tar.gz"
     time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{args.lang}.txt")]
-
-    regex24 = "(2[0-3]|[01]?[0-9])[:.]([0-5]?[0-9])"
-    regex12 = "(0?[1-9]|1[0-2])[:.]([0-5]\d)\s?((A\.?M\.?)|(P\.?M\.?)|(a\.?m\.?)|(p\.?m\.?))"
-    time_regex = re.compile("(" + "|".join([regex12, regex24]) + ")")
     label_map = {exp: time_expressions[i][0] for i in range(len(time_expressions))
                  for exp in time_expressions[i][1].split("|")}
 
     # Compute the distribution
-    grounding = find_time_expressions(corpus_file, time_regex, time_expressions, label_map, args.lang)
+    grounding = find_time_expressions(corpus_file, time_expressions, label_map, args.lang)
 
     with open(f"{args.out_dir}/{args.lang}_24.json", "w") as f_out:
         json.dump(grounding, f_out)
 
 
-def find_time_expressions(corpus_file, time_regex, time_expressions, label_map, lang):
+def find_time_expressions(corpus_file, time_expressions, label_map, lang):
     """
     Finds time expressions in the corpus file and returns
     a list of (time, time expressions, count) tuples
@@ -40,51 +34,35 @@ def find_time_expressions(corpus_file, time_regex, time_expressions, label_map, 
     is_asian = lang in {"ja", "zh"}
 
     # Count the co-occurrences of each cardinal with a time expression
-    grounding = defaultdict(lambda: defaultdict(int))
-
-    def get_time(s):
-        today = str(datetime.date.today())
-        time = parser.parse(" ".join((today, s)))
-        return time.hour
+    grounding = {exp: {h: 0 for h in range(0, 24)} for exp in label_map.values()}
 
     # Regex to find sentences with time expressions. Each entry may contain multiple surface forms.
     time_exp_mapping = {t: entry[1].split("|")[0] for entry in time_expressions for t in entry[1].split("|")}
     all_time_expressions = [t for entry in time_expressions for t in entry[1].split("|")]
 
-    # Also allow for compound words
-    if lang == "de":
-        time_exp_template = re.compile("(" + "|".join([rf"{exp}" for exp in all_time_expressions]) + ")", re.IGNORECASE)
-    else:
-        time_exp_template = re.compile(
-            "(" + "|".join([rf"\b{exp}\b" for exp in all_time_expressions]) + ")", re.IGNORECASE)
+    # Allow for compound words in German. In Asian languages there are no spaces.
+    time_exp_template = "(" + "|".join([rf"\b{exp}\b" for exp in all_time_expressions]) + ")"
+    if lang == "de" or is_asian:
+        time_exp_template = "(" + "|".join([rf"{exp}" for exp in all_time_expressions]) + ")"
+    time_exp_template = re.compile(time_exp_template, re.IGNORECASE)
+
+    # Regex to find times
+    regex24 = "(2[0-3]|[01]?\d):([0-5]\d)"
+    regex12 = "(0?[1-9]|1[0-2]):([0-5]\d)\s?((a\.?m\.?)|(p\.?m\.?))"
+    time_regex = "(" + "|".join([regex12, regex24]) + ")"
+    time_regex = re.compile(time_regex, re.IGNORECASE)
 
     with gzip.open(corpus_file, "r") as f_in:
         for line in tqdm.tqdm(f_in):
-            try:
-                line = line.decode("utf-8")
-            except:
-                # Ignore errors from special characters not in unicode.
-                continue
+            line = line.decode("utf-8", errors="ignore")
 
-            # Split to sentences (roughly)
-            for sent in line.split("."):
-                # Find time mentions
-                time_matches = re.finditer(time_regex, sent)
+            # Found a time expression
+            for ematch in time_exp_template.finditer(line):
+                expression = label_map[time_exp_mapping[ematch.group(0).lower()]]
 
-                for time_match in time_matches:
-                    time = get_time(time_match.group(0))
-                    if time is not None:
-
-                        # Find time expressions
-                        exp_matches = list(re.finditer(time_exp_template, sent))
-
-                        # No time expressions found
-                        if len(exp_matches) != 1:
-                            continue
-
-                        exp_match = exp_matches[0]
-                        expression = time_exp_mapping[exp_match.group(0).strip().lower()]
-                        grounding[label_map[expression]][int(time)] += 1
+                # Found a time immediately around the time expression
+                for tmatch in time_regex.finditer(line):
+                    grounding[expression][parser.parse(tmatch.group(0), ignoretz=True).hour] += 1
 
     return grounding
 

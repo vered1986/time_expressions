@@ -10,7 +10,7 @@ from src.common.times import to_24hr
 
 expressions = ["morning", "noon", "afternoon", "evening", "night"]
 exp2id = {exp: i for i, exp in enumerate(expressions)}
-display_model = {"lm_based": "LM", "extractive": "Extractive"}
+display_model = {"lm_based": "LM", "extractive": "Extractive", "baseline": "Greetings"}
 display_type = {"24": "Dist", "start_end": "SE"}
 
 
@@ -34,7 +34,7 @@ def main():
         # Remove evening for Brazil
         min_gold = [x if x != exp2id["evening"] else None for x in min_gold]
 
-        for model in ["extractive", "lm_based"]:
+        for model in ["extractive", "lm_based", "baseline"]:
             for type in ["24", "start_end"]:
                 file = f"output/{model}/{lang}_{type}.json"
                 if not os.path.exists(file):
