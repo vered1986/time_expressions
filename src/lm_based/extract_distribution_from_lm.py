@@ -11,14 +11,20 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--out_dir", default="output/lm_based", type=str, required=False, help="Output directory")
     parser.add_argument("--device", default=-1, type=int, required=False, help="GPU device or -1 for CPU")
+    parser.add_argument("--lang", default=None, type=str, required=False,
+                        help="Language code. If not specified, computes for all")
     args = parser.parse_args()
 
     # Load multilingual BERT
     unmasker = pipeline('fill-mask', model='bert-base-multilingual-cased', device=args.device)
 
     # Iterate over languages
-    for file in os.listdir("data/templates/distribution"):
-        lang = file.replace(".txt", "")
+    if args.lang is not None:
+        langs = [args.lang]
+    else:
+        langs = [file.replace(".txt", "") for file in os.listdir("data/templates/distribution")]
+
+    for lang in langs:
         templates = [line.strip() for line in open(f"data/templates/distribution/{lang}.txt")]
         ampm_map = None
 

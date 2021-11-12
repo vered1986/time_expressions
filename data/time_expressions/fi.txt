@@ -2,4 +2,4 @@ morning	aamu
 noon	keskipäivä
 afternoon	iltapäivällä
 evening	ilta
-night	yö-
+night	yö

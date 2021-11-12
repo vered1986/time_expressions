@@ -15,7 +15,7 @@ def main():
     args = parser.parse_args()
 
     corpus_file = f"{args.wiki_dir}/{args.lang}_wiki.tar.gz"
-    time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{args.lang}.txt")]
+    time_expressions = [line.lower().strip().split("\t") for line in open(f"data/time_expressions/{args.lang}.txt")]
     label_map = {exp: time_expressions[i][0] for i in range(len(time_expressions))
                  for exp in time_expressions[i][1].split("|")}
 
@@ -40,9 +40,10 @@ def find_time_expressions(corpus_file, time_expressions, label_map, lang):
     time_exp_mapping = {t: entry[1].split("|")[0] for entry in time_expressions for t in entry[1].split("|")}
     all_time_expressions = [t for entry in time_expressions for t in entry[1].split("|")]
 
-    # Allow for compound words in German. In Asian languages there are no spaces.
+    # Allow for compound words in German and Finnish.
+    # In Asian languages there are no spaces.
     time_exp_template = "(" + "|".join([rf"\b{exp}\b" for exp in all_time_expressions]) + ")"
-    if lang == "de" or is_asian:
+    if lang in {"de", "fi"} or is_asian:
         time_exp_template = "(" + "|".join([rf"{exp}" for exp in all_time_expressions]) + ")"
     time_exp_template = re.compile(time_exp_template, re.IGNORECASE)
 
@@ -54,15 +55,18 @@ def find_time_expressions(corpus_file, time_expressions, label_map, lang):
 
     with gzip.open(corpus_file, "r") as f_in:
         for line in tqdm.tqdm(f_in):
-            line = line.decode("utf-8", errors="ignore")
+            try:
+                line = line.decode("utf-8", errors="ignore")
 
-            # Found a time expression
-            for ematch in time_exp_template.finditer(line):
-                expression = label_map[time_exp_mapping[ematch.group(0).lower()]]
+                # Found a time expression
+                for ematch in time_exp_template.finditer(line):
+                    expression = label_map[time_exp_mapping[ematch.group(0).lower()]]
 
-                # Found a time immediately around the time expression
-                for tmatch in time_regex.finditer(line):
-                    grounding[expression][parser.parse(tmatch.group(0), ignoretz=True).hour] += 1
+                    # Found a time immediately around the time expression
+                    for tmatch in time_regex.finditer(line):
+                        grounding[expression][parser.parse(tmatch.group(0), ignoretz=True).hour] += 1
+            except:
+                continue
 
     return grounding
 
