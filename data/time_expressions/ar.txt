@@ -1,5 +1,5 @@
 morning	صباح
-noon	وقت الظهيرة
-afternoon	بعد الظهر
+noon	وقت الظهيرة|ظهيرة
+afternoon	بعد الظهر|أصيلي
 evening	مساء
 night	ليل

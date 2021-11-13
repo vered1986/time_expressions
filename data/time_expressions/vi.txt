@@ -1,5 +1,5 @@
-morning	buổi sáng|buổi mai|sáng sớm|sớm mai
-noon	buổi trưa|đúng trưa|lúc trưa
-afternoon	buổi chiều|xế chiều
-evening	buổi tối|chiều|làm cho bằng nhau|làm cho bằng phẳng|tội
+morning	buổi sáng|sáng
+noon	buổi trưa|trưa
+afternoon	buổi chiều|chiều
+evening	buổi tối|tội
 night	đêm

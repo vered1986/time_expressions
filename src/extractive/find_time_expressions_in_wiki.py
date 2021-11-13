@@ -32,6 +32,7 @@ def find_time_expressions(corpus_file, time_expressions, label_map, lang):
     a list of (time, time expressions, count) tuples
     """
     is_asian = lang in {"ja", "zh"}
+    allow_compounds = lang in {"de", "fi", "sv", "hi"}
 
     # Count the co-occurrences of each cardinal with a time expression
     grounding = {exp: {h: 0 for h in range(0, 24)} for exp in label_map.values()}
@@ -40,10 +41,10 @@ def find_time_expressions(corpus_file, time_expressions, label_map, lang):
     time_exp_mapping = {t: entry[1].split("|")[0] for entry in time_expressions for t in entry[1].split("|")}
     all_time_expressions = [t for entry in time_expressions for t in entry[1].split("|")]
 
-    # Allow for compound words in German and Finnish.
+    # Allow for compound words in German, Finnish, and Swedish.
     # In Asian languages there are no spaces.
     time_exp_template = "(" + "|".join([rf"\b{exp}\b" for exp in all_time_expressions]) + ")"
-    if lang in {"de", "fi"} or is_asian:
+    if allow_compounds or is_asian:
         time_exp_template = "(" + "|".join([rf"{exp}" for exp in all_time_expressions]) + ")"
     time_exp_template = re.compile(time_exp_template, re.IGNORECASE)
 
