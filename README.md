@@ -8,7 +8,7 @@
 bash src/extractive/find_time_expressions.sh [wiki_dir]
 ```
 
-To download and parse multilingual Wikipedia, use this [script](https://github.com/vered1986/PythonUtils/blob/master/corpora/wikipedia/download_multilingual_wiki.sh). 
+Links to Wikipedia preprocessing will be added upon publication of the paper.
 
 ## LM-Based
 
