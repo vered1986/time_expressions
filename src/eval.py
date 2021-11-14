@@ -65,9 +65,7 @@ def main():
     df = pd.DataFrame.from_dict(results)
     df.index = pd.MultiIndex.from_frame(df[["Language", "Model", "Type"]])
     df = df.drop(["Language", "Model", "Type"], axis=1)
-    print(df[["Accuracy"]])
-
-    # print(df.to_latex(float_format="%.1f", bold_rows=True, multirow=True, position="t", label="tab:results", caption=""))
+    print(df.to_latex(float_format="%.1f", bold_rows=True, multirow=True, position="t", label="tab:results", caption=""))
 
 
 def assign_minutes(dist, exp2id):
