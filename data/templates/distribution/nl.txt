@@ -1,6 +1,16 @@
+Het is [MASK] uur 's <time_exp>s.
+Het gebeurt in de <time_exp> om [MASK] uur.
+Het was [MASK] uur 's <time_exp>s.
+Het gebeurde in de <time_exp>, om [MASK] uur.
+Het zal 's <time_exp>s om [MASK] uur gebeuren.
+Het zal 's <time_exp>s gebeuren, om [MASK] uur.
+Het zal gebeuren in de <time_exp>, om [MASK] uur.
 Elke <time_exp> om [MASK] uur.
-Het was [MASK] uur in de <time_exp>.
-Het zal <time_exp><time_exp> om [MASK] uur gebeuren.
+Het gebeurde gisteren in de <time_exp> om [MASK] uur.
+Elke <time_exp> om [MASK].
 Het gebeurde gisteren in de <time_exp>, om [MASK] uur.
 Het is [MASK] uur in de <time_exp>.
-Het gebeurde in de <time_exp>, om [MASK] uur.
+Het gebeurde in de <time_exp> om [MASK] uur.
+Het is [MASK] uur 's <time_exp>.
+Het was [MASK] uur in de <time_exp>.
+Het was [MASK] uur 's <time_exp>.

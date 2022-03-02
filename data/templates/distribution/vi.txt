@@ -1,6 +1,14 @@
+[MASK] giờ <time_exp> hàng ngày.
+Nó xảy ra vào lúc [MASK] giờ <time_exp>.
+Nó xảy ra vào <time_exp> ngày hôm qua, lúc [MASK] giờ.
 Đã [MASK] giờ <time_exp>.
 Bây giờ là [MASK] giờ <time_exp>.
-Nó đã xảy ra vào ngày hôm qua vào <time_exp>, lúc [MASK].
-Nó xảy ra vào <time_exp>, lúc [MASK].
-Nó sẽ xảy ra vào <time_exp>, lúc [MASK].
-Mỗi <time_exp> lúc [MASK].
+Nó đã xảy ra vào <time_exp> hôm qua, lúc [MASK] giờ.
+Nó sẽ xảy ra trong <time_exp>, lúc [MASK] giờ.
+Nó xảy ra trong <time_exp>, lúc [MASK] giờ.
+Nó sẽ xảy ra vào buổi <time_exp>, lúc [MASK] giờ.
+Nó sẽ xảy ra vào <time_exp>, lúc [MASK] giờ.
+Nó xảy ra vào buổi <time_exp>, lúc [MASK] giờ.
+Nó xảy ra vào <time_exp>, lúc [MASK] giờ.
+Mỗi <time_exp> lúc [MASK] giờ.
+Nó xảy ra vào buổi <time_exp> ngày hôm qua, lúc [MASK] giờ.

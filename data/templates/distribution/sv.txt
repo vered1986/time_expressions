@@ -1,6 +1,9 @@
-Varje <time_exp> klockan [MASK].
-Klockan var [MASK] på <time_exp>en.
+Det hände på <time_exp>en, vid [MASK].
 Klockan är [MASK] på <time_exp>en.
-Det hände på <time_exp>en, klockan [MASK].
+Klockan är [MASK] på efter<time_exp>en.
+Klockan var [MASK] på <time_exp>en.
 Det hände igår på <time_exp>en, klockan [MASK].
+Varje <time_exp> kl [MASK].
+Det kommer att hända på <time_exp>en, klockan [MASK].
 Det kommer att ske på <time_exp>en, klockan [MASK].
+Det hände på <time_exp>en, klockan [MASK].

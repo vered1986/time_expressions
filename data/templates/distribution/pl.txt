@@ -1,6 +1,19 @@
-Codziennie <time_exp> o [MASK].
+Stanie się to w <time_exp> o godzinie [MASK].
+Stanie się to <time_exp> o godzinie [MASK].
+Stanie się to w <time_exp>y o godzinie [MASK].
+Każdej <time_exp>y o [MASK].
+Stało się to wczoraj w <time_exp>y o [MASK].
+Stało się to w <time_exp>y o godzinie [MASK].
+Stało się to <time_exp> o godzinie [MASK].
+Stanie się to po <time_exp> o godzinie [MASK].
+Jest [MASK] w <time_exp>y.
+Stało się to po <time_exp> o godzinie [MASK].
 Była [MASK] <time_exp>.
-Stało się to <time_exp> o [MASK].
-Stanie się to <time_exp> o [MASK].
-Jest [MASK] <time_exp>.
+Każdego <time_exp> o [MASK].
+W każde <time_exp> o [MASK].
 Stało się to wczoraj <time_exp> o [MASK].
+Stało się to wczoraj w <time_exp> o godzinie [MASK].
+Stało się to w <time_exp> o godzinie [MASK].
+Jest [MASK] <time_exp>.
+Była [MASK] w <time_exp>y.
+Stało się to wczoraj po <time_exp> o [MASK].

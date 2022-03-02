@@ -1,5 +1,14 @@
-Det skjedde om <time_exp>en, klokken [MASK].
-Klokken er [MASK] om <time_exp>en.
-Det vil skje om <time_exp>en, klokken [MASK].
-Hver <time_exp> kl [MASK].
 Klokken var [MASK] om <time_exp>en.
+Klokken var [MASK] på <time_exp>en.
+Det skjedde på <time_exp>en, klokka [MASK].
+Det skjedde om <time_exp>en, klokken [MASK].
+Det skjedde i går i <time_exp>, klokken [MASK].
+Det vil skje om <time_exp>en, klokken [MASK].
+Det skjedde i går på <time_exp>en, klokken [MASK].
+Klokken er [MASK] om <time_exp>en.
+Det vil skje på <time_exp>en, klokken [MASK].
+Klokken er [MASK] på <time_exp>en.
+Det skjedde i går om <time_exp>en, klokken [MASK].
+Hver <time_exp> kl [MASK].
+Det vil skje i <time_exp>, klokken [MASK].
+Det skjedde på <time_exp>en, klokken [MASK].

@@ -11,3 +11,10 @@ do
   python -m src.compute_start_end_for_24h_clock --lang ${lang} --out_dir output/lm_based;
   python -m src.compute_start_end_from_start_end_dist --lang ${lang} --out_dir output/lm_based;
 done
+
+
+
+for lang in "${langs[@]}"
+do
+  python -m src.compute_start_end_from_start_end_dist --lang ${lang} --out_dir output/lm_based;
+done

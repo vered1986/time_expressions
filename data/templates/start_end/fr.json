@@ -1,1 +1,1 @@
-{"start": ["La <time_exp>ée commence à [MASK].", "La <time_exp>ée commence à [MASK] heures."], "end": ["La <time_exp>ée se termine à [MASK].", "La <time_exp>ée se termine à [MASK]h."]}
+{"start": ["La <time_exp>ée commence à [MASK].", "Le <time_exp> commence à [MASK].", "Le <time_exp> commence dans [MASK].", "La <time_exp> commence à [MASK].", "La <time_exp> commence dans [MASK]."], "end": ["La <time_exp> se termine dans [MASK].", "La <time_exp> se termine à [MASK].", "Le <time_exp> se termine à [MASK].", "La <time_exp>ée se termine à [MASK]."]}

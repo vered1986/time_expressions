@@ -1,1 +1,1 @@
-{"start": ["<time_exp>[MASK]点开始。"], "end": ["<time_exp>[MASK]点结束。"]}
+{"start": ["<time_exp> [MASK] 点开始。.", "<time_exp>[MASK]点开始。.", "<time_exp>上[MASK]点开始。."], "end": ["<time_exp>上[MASK]点结束。.", "<time_exp>[MASK]点结束。."]}

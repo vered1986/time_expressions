@@ -1,6 +1,24 @@
+Aconteceu ontem ao <time_exp>, às [MASK].
 São [MASK] da <time_exp>.
-Acontecerá pela <time_exp>, às [MASK].
-Todas as <time_exp>s às [MASK].
+Aconteceu ontem de <time_exp>, às [MASK].
+São [MASK] da <time_exp>.
+Era [MASK] da <time_exp>.
 Eram [MASK] da <time_exp>.
-Aconteceu pela <time_exp>, às [MASK].
-Aconteceu ontem pela <time_exp>, às [MASK].
+Aconteceu de <time_exp>, às [MASK].
+Será à <time_exp> às [MASK].
+Aconteceu à <time_exp>, às [MASK].
+Será à <time_exp>, às [MASK].
+Será pela <time_exp>, às [MASK].
+Todo <time_exp> às [MASK].
+Eram [MASK] horas da <time_exp>.
+Eram [MASK] da <time_exp>.
+Aconteceu ontem à <time_exp> às [MASK].
+É [MASK] da <time_exp>.
+Aconteceu à <time_exp>, à [MASK].
+Aconteceu ao <time_exp>, às [MASK].
+Será ao <time_exp>, às [MASK].
+Aconteceu ontem à <time_exp>, às [MASK].
+Aconteceu ontem à <time_exp>, à [MASK].
+Todas as <time_exp>s às [MASK].
+São [MASK] horas da <time_exp>.
+Aconteceu à <time_exp> às [MASK].

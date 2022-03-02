@@ -8,4 +8,5 @@ tqdm==4.62.3
 wikiextractor==3.0.4
 astral
 torch
-transformers==4.11.3
+transformers==4.11.3y
+gurobipy

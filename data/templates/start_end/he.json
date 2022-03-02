@@ -1,1 +1,1 @@
-{"start": ["ה<time_exp> מתחיל ב-[MASK].", "ה<time_exp> מתחיל ב[MASK]."], "end": ["ה<time_exp> מסתיים ב-[MASK]."]}
+{"start": ["<time_exp> מתחיל ב-[MASK].", "ה<time_exp> מתחילים ב-[MASK].", "ה<time_exp> מתחיל ב[MASK].", "ה<time_exp> מתחיל ב-[MASK]."], "end": ["ה<time_exp> מסתיימים בשעה [MASK].", "שעת ה<time_exp> מסתיימת ב-[MASK].", "ה<time_exp> מסתיים ב-[MASK].", "<time_exp> מסתיים ב-[MASK].", "ה<time_exp> מסתיים בשעה [MASK]."]}

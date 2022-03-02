@@ -1,6 +1,12 @@
-<time_exp> के [MASK] बजे हैं।
-यह <time_exp> [MASK] बजे हुआ।
-यह <time_exp> [MASK] बजे होगा।
-हर <time_exp> [MASK] बजे।
-यह कल <time_exp> [MASK] बजे हुआ।
-<time_exp> के [MASK] बज रहे थे।
+यह कल <time_exp> [MASK] बजे हुआ।.
+यह <time_exp> [MASK] बजे होगा।.
+यह <time_exp> [MASK] बजे हुआ।.
+हर <time_exp> [MASK] बजे।.
+घटना <time_exp> [MASK] बजे हुई।.
+<time_exp> [MASK] बजे हुआ।.
+हर <time_exp> [MASK].
+<time_exp> [MASK] बजे होगा।.
+बात कल <time_exp> [MASK] बजे की है।.
+<time_exp> के [MASK] बजे हैं।.
+<time_exp> के [MASK] बज रहे थे।.
+<time_exp> के [MASK] बज रहे थे.

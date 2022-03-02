@@ -1,6 +1,16 @@
-它发生在<time_exp>，[MASK]。
-现在是<time_exp> [MASK]。
-时间是<time_exp> [MASK]。
-每天<time_exp> [MASK]。
-它发生在昨天<time_exp> [MASK]。
-它将在<time_exp> [MASK] 发生。
+事情发生在<time_exp> [MASK] 点。.
+它发生在昨天<time_exp> [MASK] 点。.
+它发生在昨天<time_exp>上 [MASK] 点。.
+时间是<time_exp> [MASK] 点。.
+每天<time_exp>[MASK]点。.
+它将在<time_exp> [MASK] 点发生。.
+它会在<time_exp> [MASK] 点发生。.
+已经是<time_exp>上 [MASK] 点了。.
+现在是<time_exp>上 [MASK] 点。.
+每<time_exp>[MASK]点。.
+那是<time_exp>[MASK]点。.
+现在是<time_exp> [MASK] 点。.
+它会在<time_exp>上 [MASK] 点发生。.
+已经是<time_exp> [MASK] 点了。.
+事情发生在昨天<time_exp> [MASK] 点。.
+这将发生在<time_exp> [MASK] 点。.

@@ -1,6 +1,18 @@
-Tous les <time_exp>s à [MASK].
-Cela se passera le <time_exp>, à [MASK].
-Il est [MASK] du <time_exp>.
+C'est arrivé le <time_exp>, à [MASK] heures.
+Ça se passera à <time_exp>, à [MASK].
+C'est arrivé hier <time_exp> à [MASK].
+Ça se passera le <time_exp>, à [MASK].
+Il était [MASK] heures du <time_exp>.
+C'est arrivé hier à <time_exp>, à [MASK].
+Il est [MASK] heures du <time_exp>.
+Ça se passera dans la <time_exp>, à [MASK].
+C'est arrivé hier dans la <time_exp>, à [MASK].
+C'est arrivé à <time_exp>, à [MASK].
 C'est arrivé hier <time_exp>, à [MASK].
-Il était [MASK] du <time_exp>.
-C'est arrivé le <time_exp>, à [MASK].
+Il était [MASK] heures du <time_exp>.
+Tous les <time_exp>s à [MASK].
+Il est [MASK] heures du <time_exp>.
+Tous les <time_exp> à [MASK].
+C'est arrivé le <time_exp> à [MASK] heures.
+C'est arrivé dans la <time_exp>, à [MASK].
+Ça se passera le <time_exp> à [MASK].

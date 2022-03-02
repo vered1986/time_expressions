@@ -27,6 +27,8 @@ def main():
     for lang in langs:
         print(lang)
         templates = json.load(open(f"data/templates/start_end/{lang}.json"))
+        templates = {edge: [template for template in curr_templates if "[MASK]" in template]
+                     for edge, curr_templates in templates.items()}
         ampm_map = None
 
         # This language uses 12hr clock

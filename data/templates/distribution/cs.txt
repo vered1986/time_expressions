@@ -1,6 +1,22 @@
-Stane se tak <time_exp> v [MASK].
-Stalo se to včera <time_exp> v [MASK].
-Bylo [MASK] <time_exp>.
+Stalo se to včera v <time_exp>i v [MASK].
+Je [MASK] hodin <time_exp>.
+Stalo se to včera v <time_exp> ve [MASK].
 Stalo se to <time_exp>, v [MASK].
+Stalo se to včera <time_exp> v [MASK] hodin.
+Stalo se to v <time_exp>, ve [MASK].
+Každé <time_exp> ve [MASK].
+Bylo [MASK] <time_exp>.
+Stane se tak v <time_exp>i, v [MASK].
+Je [MASK] v <time_exp>i.
+Stalo se to včera <time_exp>, v [MASK].
+Bylo [MASK] v <time_exp>i.
+Stane se tak v <time_exp> ve [MASK].
+Bylo [MASK] v <time_exp>.
 Je [MASK] <time_exp>.
 Každé <time_exp> v [MASK].
+Každý <time_exp> v [MASK].
+Stalo se to v <time_exp>i, v [MASK].
+Stane se tak <time_exp> v [MASK].
+Stalo se to včera <time_exp> v [MASK].
+Stalo se to <time_exp> v [MASK].
+Je [MASK] hodin v <time_exp>.

@@ -1,6 +1,11 @@
-זה קרה ב<time_exp>, בשעה [MASK].
-זה יקרה ב<time_exp>, בשעה [MASK].
-כל <time_exp> בשעה [MASK].
-זה קרה אתמול ב<time_exp>, בשעה [MASK].
-השעה הייתה [MASK] ב<time_exp>.
+כל <time_exp> ב-[MASK].
 השעה [MASK] ב<time_exp>.
+זה קרה אתמול ב<time_exp>, בשעה [MASK].
+זה יקרה ב<time_exp>, ב-[MASK].
+כל <time_exp> בשעה [MASK].
+זה יקרה <time_exp>, ב-[MASK].
+זה קרה אתמול <time_exp>, בשעה [MASK].
+השעה הייתה [MASK] ב<time_exp>.
+זה קרה ב<time_exp>, בשעה [MASK].
+זה קרה <time_exp>, בשעה [MASK].
+זה יקרה ב<time_exp>, בשעה [MASK].

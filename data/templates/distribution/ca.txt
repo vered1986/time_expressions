@@ -1,6 +1,17 @@
-Cada <time_exp> a les [MASK].
-Va passar al <time_exp>, a les [MASK].
-Va passar ahir al <time_exp>, a les [MASK].
-Són les [MASK] del <time_exp>.
+Cada <time_exp> a la [MASK].
+Va passar ahir a la <time_exp>, a les [MASK].
 Serà al <time_exp>, a les [MASK].
+Era la [MASK] de la <time_exp>.
+Va passar a la <time_exp>, a la [MASK].
+Serà a la <time_exp>, a la [MASK].
+Són les [MASK] de la <time_exp>.
+Va passar ahir a la <time_exp>, a la [MASK].
+Va passar a la <time_exp>, a les [MASK].
+Va passar ahir al <time_exp>, a les [MASK].
 Eren les [MASK] del <time_exp>.
+Va passar al <time_exp>, a les [MASK].
+Són les [MASK] del <time_exp>.
+Cada <time_exp> a les [MASK].
+Passarà a la <time_exp>, a les [MASK].
+Eren les [MASK] de la <time_exp>.
+És la [MASK] de la <time_exp>.

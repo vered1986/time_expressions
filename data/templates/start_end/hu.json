@@ -1,1 +1,1 @@
-{"start": ["A <time_exp> [MASK]-kor kezdődik."], "end": ["A <time_exp> [MASK]-kor ér véget."]}
+{"start": ["A <time_exp> [MASK]-kor kezdődik.", "[MASK]-én kezdődik a <time_exp>.", "[MASK]-kor kezdődik az <time_exp>.", "Az <time_exp> [MASK]-kor kezdődik.", "[MASK]-án kezdődik az <time_exp>."], "end": ["A <time_exp>i órák [MASK]-kor érnek véget.", "Az <time_exp> [MASK]-kor ér véget.", "A <time_exp> [MASK]-vel ér véget.", "Az <time_exp> [MASK] órakor ér véget.", "Az <time_exp> [MASK]-án ér véget.", "A <time_exp> [MASK]-kor ér véget."]}

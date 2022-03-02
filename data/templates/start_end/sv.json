@@ -1,1 +1,1 @@
-{"start": ["<time_exp> börjar kl [MASK].", "<time_exp> börjar [MASK]."], "end": ["<time_exp> slutar [MASK].", "<time_exp> slutar [MASK]."]}
+{"start": ["<time_exp>en börjar [MASK].", "<time_exp>en börjar kl [MASK]."], "end": ["<time_exp>en slutar [MASK].", "<time_exp>en slutar kl [MASK]."]}

@@ -1,6 +1,17 @@
-<time_exp> [MASK] óra volt.
+Tegnap <time_exp>ben, [MASK]-kor történt.
+Ez <time_exp> [MASK]-kor fog megtörténni.
+<time_exp> [MASK]-kor történt.
 <time_exp> [MASK] óra van.
-Tegnap <time_exp> [MASK] órakor történt.
-<time_exp>, [MASK] órakor történt.
+<time_exp>, [MASK] órakor lesz.
+<time_exp>ben [MASK] óra volt.
+<time_exp>i [MASK] óra van.
+<time_exp> [MASK] óra volt.
+<time_exp>ben, [MASK]-kor lesz.
 <time_exp>, [MASK]-kor fog megtörténni.
+<time_exp>ben, [MASK]-kor történt.
+<time_exp>, [MASK]-kor lesz.
+Minden <time_exp>ben [MASK] órakor.
 Minden <time_exp> [MASK]-kor.
+<time_exp> [MASK] volt.
+Tegnap <time_exp> [MASK]-kor történt.
+<time_exp> [MASK] van.

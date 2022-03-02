@@ -1,6 +1,19 @@
-Erano le [MASK] del <time_exp>.
-Sono le [MASK] del <time_exp>.
+È successo nel <time_exp>, all'[MASK].
+È successo a <time_exp>, alle [MASK].
 È successo ieri <time_exp>, alle [MASK].
-È successo sta<time_exp>, alle [MASK].
-Accadrà al <time_exp>, alle [MASK].
+È successo la <time_exp>, alle [MASK].
+Accadrà di <time_exp>, alle [MASK].
+Accadrà domani <time_exp>, alle [MASK].
+Sono le [MASK] del <time_exp>.
+Erano le [MASK] del <time_exp>.
+Erano le [MASK] di <time_exp>.
+Sono le [MASK] di <time_exp>.
+Accadrà in <time_exp>ta, alle [MASK].
+È successo ieri nella <time_exp>, alle [MASK].
+È successo ieri a <time_exp>, alle [MASK].
+Sono le [MASK] del <time_exp>.
+Accadrà nel <time_exp>, all'[MASK].
+È successo ieri <time_exp>, all'[MASK].
 Ogni <time_exp> alle [MASK].
+Accadrà a <time_exp>, alle [MASK].
+È successo di <time_exp>, alle [MASK].

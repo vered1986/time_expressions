@@ -25,7 +25,9 @@ def main():
         langs = [file.replace(".txt", "") for file in os.listdir("data/templates/distribution")]
 
     for lang in langs:
+        print(lang)
         templates = [line.strip() for line in open(f"data/templates/distribution/{lang}.txt")]
+        templates = [template for template in templates if "[MASK]" in template]
         ampm_map = None
 
         # This language uses 12hr clock
@@ -43,8 +45,12 @@ def main():
         time_expressions_map = {en: other.split("|") for en, other in time_expressions}
 
         # Compute the distribution
-        grounding = compute_distribution(
-            unmasker, templates, numbers_map, time_expressions_map, ampm_map)
+        try:
+            grounding = compute_distribution(
+                unmasker, templates, numbers_map, time_expressions_map, ampm_map)
+        except:
+            print(templates)
+            continue
 
         with open(f"{args.out_dir}/{lang}_24.json", "w") as f_out:
             json.dump(grounding, f_out)

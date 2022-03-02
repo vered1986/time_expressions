@@ -17,7 +17,7 @@ def main():
     labels = list(zip(*time_expressions))[0]
     labels = [l for l in labels if l != "before morning" and l in grounding.keys()]
 
-    grounding = {exp: {edge: {int(hr): cnt for hr, cnt in per_edge.items()}
+    grounding = {exp: {edge: {int(hr): cnt for hr, cnt in per_edge.items() if hr not in {"start", "end"}}
                        for edge, per_edge in per_exp.items()}
                        for exp, per_exp in grounding.items()
                  if exp != "before morning"}

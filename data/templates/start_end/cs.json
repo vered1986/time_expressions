@@ -1,1 +1,1 @@
-{"start": ["Ráno začíná v [MASK]<time_exp>"], "end": ["Ráno končí v [MASK]<time_exp>"]}
+{"start": ["<time_exp> začíná ve [MASK].", "<time_exp> začíná v [MASK]."], "end": ["<time_exp> končí ve [MASK].", "<time_exp> končí [MASK].", "<time_exp> končí v [MASK]."]}

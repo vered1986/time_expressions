@@ -1,6 +1,25 @@
-Son las [MASK] de la <time_exp>.
-Todas las <time_exp>s a las [MASK].
-Ocurrió en la <time_exp>, a las [MASK].
-Ocurrirá por la <time_exp>, a las [MASK].
+Ocurrió ayer en horas del <time_exp>, a las [MASK].
+Será por la <time_exp>, a la [MASK].
+Todas las <time_exp>s a la [MASK].
+Ocurrió ayer por la <time_exp>, a la [MASK].
 Ocurrió ayer por la <time_exp>, a las [MASK].
 Eran las [MASK] de la <time_exp>.
+Será por la <time_exp> a las [MASK].
+Son las [MASK] de la <time_exp>.
+Todos los <time_exp>s a las [MASK].
+Todas las <time_exp>s a las [MASK].
+Es la [MASK] de la <time_exp>.
+Ocurrió por la <time_exp> a las [MASK].
+Son las [MASK] del <time_exp>.
+Ocurrirá por la <time_exp>, a las [MASK].
+Ocurrió por la <time_exp>, a la [MASK].
+Son las [MASK] de la <time_exp>.
+Será en el <time_exp>, a las [MASK].
+Será por la <time_exp>, a las [MASK].
+Ocurrió ayer por la <time_exp> a las [MASK].
+Era la [MASK] de la <time_exp>.
+Eran las [MASK] del <time_exp>.
+Eran las [MASK] de la <time_exp>.
+Ocurrió en la <time_exp>, a las [MASK].
+Ocurrió ayer en la <time_exp>, a las [MASK].
+Ocurrió en el <time_exp>, a las [MASK].

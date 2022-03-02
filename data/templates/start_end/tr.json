@@ -1,1 +1,1 @@
-{"start": ["<time_exp> [MASK]'da başlar.", "<time_exp> [MASK]'da başlıyor."], "end": ["<time_exp> [MASK]'da biter.", "<time_exp> [MASK]'da bitiyor."]}
+{"start": ["<time_exp> [MASK]'de başlıyor.", "<time_exp> [MASK]'da başlıyor.", "<time_exp> [MASK]'da başlar.", "<time_exp> [MASK]'de başlar."], "end": ["<time_exp> [MASK]'de biter.", "<time_exp> [MASK]'de bitiyor.", "<time_exp> [MASK]'da biter.", "<time_exp> [MASK]'da bitiyor."]}

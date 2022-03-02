@@ -1,6 +1,17 @@
+Joka <time_exp> klo [MASK].
+Se tapahtui eilen <time_exp>, kello [MASK].
+Se tapahtuu <time_exp>llä, klo [MASK].
+Kello oli [MASK] <time_exp>.
+Kello on [MASK] <time_exp>.
+Se tapahtui <time_exp>, kello [MASK].
+Se tapahtui eilen <time_exp>llä, klo [MASK].
+Se tapahtuu <time_exp>lla, klo [MASK].
+Se tapahtuu <time_exp>, kello [MASK].
+Se tapahtui <time_exp>llä, klo [MASK].
+Se tapahtui <time_exp>llä, kello [MASK].
+Kello oli [MASK] <time_exp>llä.
+Kello on [MASK] <time_exp>llä.
 Se tapahtui <time_exp>lla klo [MASK].
 Kello on [MASK] <time_exp>lla.
+Se tapahtui eilen <time_exp>lla klo [MASK].
 Kello oli [MASK] <time_exp>lla.
-Se tapahtui eilen <time_exp>lla, klo [MASK].
-Joka <time_exp> klo [MASK].
-Se tapahtuu <time_exp>lla, klo [MASK].

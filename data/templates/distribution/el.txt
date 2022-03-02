@@ -1,6 +1,15 @@
-Κάθε <time_exp> στις [MASK].
 Ήταν [MASK] το <time_exp>.
 Συνέβη το <time_exp>, στις [MASK].
-Είναι [MASK] το <time_exp>.
 Θα γίνει το <time_exp>, στις [MASK].
+Είναι [MASK] το <time_exp>.
+Συνέβη χθες το <time_exp> στις [MASK].
+Συνέβη το <time_exp> στις [MASK].
+Συνέβη το <time_exp> στη [MASK].
+Συνέβη χθες το <time_exp> στη [MASK].
 Συνέβη χθες το <time_exp>, στις [MASK].
+Θα γίνει το <time_exp> στις [MASK].
+Κάθε <time_exp> στις [MASK].
+Κάθε <time_exp> στη [MASK].
+Θα γίνει το <time_exp> στη [MASK].
+Ήταν [MASK] το <time_exp>.
+Είναι [MASK] το <time_exp>.

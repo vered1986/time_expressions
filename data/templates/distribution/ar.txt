@@ -1,6 +1,12 @@
-كانت الساعة [MASK] <time_exp>ًا.
-كل <time_exp> الساعة [MASK].
-الساعة [MASK] <time_exp>ًا.
+كانت الساعة [MASK] <time_exp>.
+حدث ذلك <time_exp> ، الساعة [MASK].
+حدث ذلك <time_exp> أمس ، الساعة [MASK].
+حدث ذلك في <time_exp> أمس ، الساعة [MASK].
+كانت الساعة [MASK] <time_exp>.
+سيحدث <time_exp> ، الساعة [MASK].
 حدث ذلك في ال<time_exp> ، الساعة [MASK].
-حدث ذلك أمس في ال<time_exp> ، الساعة [MASK].
+إنها [MASK] <time_exp>.
+سيحدث في ال<time_exp> ، الساعة [MASK].
 سيحدث ذلك في ال<time_exp> ، الساعة [MASK].
+كل <time_exp> الساعة [MASK].
+الساعة [MASK] <time_exp>.

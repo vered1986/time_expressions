@@ -1,1 +1,1 @@
-{"morning": {"start": 1.0, "end": 2.0}, "noon": {"start": 12.0, "end": 15.0}, "afternoon": {"start": 15.0, "end": 16.0}, "evening": {"start": 18.0, "end": 20.0}, "night": {"start": 20.0, "end": 1.0}}
+{"morning": {"start": 1.0, "end": 2.0}, "noon": {"start": 6.0, "end": 12.000000000000215}, "afternoon": {"start": 12.000000000000215, "end": 15.0}, "evening": {"start": 14.999999999999998, "end": 20.000000000000032}, "night": {"start": 20.000000000000032, "end": 1.0}}

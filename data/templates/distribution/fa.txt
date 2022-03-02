@@ -1,6 +1,13 @@
-ساعت [MASK] <time_exp> بود.
-<time_exp> ساعت [MASK] انجام می شود.
+<time_exp>، ساعت [MASK] اتفاق افتاد.
+دیروز ساعت [MASK] <time_exp> اتفاق افتاد.
 ساعت [MASK] <time_exp> است.
-هر روز <time_exp> ساعت [MASK].
-دیروز <time_exp> ساعت [MASK] رخ داد.
+ساعت [MASK] <time_exp> اتفاق می افتد.
+<time_exp> ساعت [MASK] رخ خواهد داد.
+دیروز <time_exp> ساعت [MASK] اتفاق افتاد.
+در ساعت [MASK] <time_exp> اتفاق افتاد.
+ساعت [MASK] <time_exp> بود.
+ساعت [MASK] <time_exp> اتفاق افتاد.
+هر <time_exp> ساعت [MASK].
+در ساعت [MASK] <time_exp> اتفاق خواهد افتاد.
 <time_exp> ساعت [MASK] اتفاق افتاد.
+هر روز <time_exp> ساعت [MASK].

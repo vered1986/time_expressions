@@ -1,6 +1,23 @@
-Было [MASK] часов <time_exp>.
+Это случилось вчера <time_exp>м, в [MASK] часов.
+Это случилось <time_exp>м, в [MASK].
+Это случилось вчера <time_exp>ю, в [MASK] часов.
+Было [MASK] <time_exp>.
+[MASK] часов <time_exp>.
+Было [MASK] часов <time_exp>а.
+Это случилось <time_exp>ом, в [MASK] часов.
+Это произойдет <time_exp>ю, в [MASK].
+Каждый <time_exp> в [MASK].
+Это случилось <time_exp> в [MASK].
+Это произойдет в <time_exp>, в [MASK] часов.
+Это случилось в <time_exp>, в [MASK] часов.
 Сейчас [MASK] <time_exp>.
-Произошло это вчера <time_exp>, в [MASK].
-Произошло это <time_exp>, в [MASK].
-Произойдет это <time_exp>, в [MASK].
+[MASK] часов <time_exp>а.
+Было [MASK] часов <time_exp>.
+Это случилось <time_exp>ю, в [MASK].
+Это случилось вчера в <time_exp>, в [MASK].
+Это произойдет <time_exp>ом, в [MASK].
 Каждое <time_exp> в [MASK].
+Это случилось вчера <time_exp>ом, в [MASK] часов.
+Это произошло вчера <time_exp> в [MASK].
+Это произойдет <time_exp>м, в [MASK].
+Каждую <time_exp> в [MASK].

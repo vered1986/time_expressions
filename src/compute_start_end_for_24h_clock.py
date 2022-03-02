@@ -6,7 +6,7 @@ import gurobipy as gb
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--lang", default="en", type=str, required=False, help="Language code")
-    parser.add_argument("--out_dir", default="output/lm_based/regex", type=str, required=False, help="Output directory")
+    parser.add_argument("--out_dir", default="output/lm_based/", type=str, required=False, help="Output directory")
     args = parser.parse_args()
 
     time_expressions = [line.strip().split("\t") for line in open(f"data/time_expressions/{args.lang}.txt")]
@@ -17,7 +17,7 @@ def main():
     labels = list(zip(*time_expressions))[0]
     labels = [l for l in labels if l != "before morning" and l in grounding.keys()]
 
-    grounding = {exp: {int(hr): cnt for hr, cnt in values.items()}
+    grounding = {exp: {int(hr): cnt for hr, cnt in values.items() if hr not in {"start", "end"}}
                  for exp, values in grounding.items()
                  if exp != "before morning"}
 

@@ -1,6 +1,8 @@
-<time_exp> [MASK]시였다.
-어제 <time_exp> [MASK]시에 일어난 일입니다.
-매일 <time_exp> [MASK]시.
+<time_exp> [MASK]시에 진행됩니다.
 <time_exp> [MASK]시에 일어난 일입니다.
+그것은 <time_exp> [MASK]시에 일어났습니다.
+어제 <time_exp> [MASK]시에 일어난 일입니다.
 그것은 <time_exp> [MASK]시에 일어날 것입니다.
+<time_exp> [MASK]시였다.
+매일 <time_exp> [MASK]시.
 <time_exp> [MASK]시입니다.

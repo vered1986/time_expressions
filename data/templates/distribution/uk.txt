@@ -1,6 +1,6 @@
-Була [MASK] <time_exp>.
 Зараз [MASK] <time_exp>.
-Це сталося вчора <time_exp>, о [MASK].
-Це сталося <time_exp>, о [MASK].
+Кожного <time_exp> о [MASK].
+Це сталося <time_exp>, о [MASK] год.
 Це відбудеться <time_exp>, о [MASK].
-Що<time_exp> о [MASK].
+Було [MASK] <time_exp>.
+Це сталося вчора <time_exp>, о [MASK] год.

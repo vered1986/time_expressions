@@ -1,6 +1,11 @@
+Itu terjadi kemarin <time_exp>, jam [MASK].
 Saat itu pukul [MASK] <time_exp>.
-Kejadiannya kemarin <time_exp>, jam [MASK].
-Ini jam [MASK] <time_exp>.
-Setiap <time_exp> pukul [MASK].
-Itu akan terjadi di <time_exp> hari, jam [MASK].
 Itu terjadi di <time_exp> hari, jam [MASK].
+Ini jam [MASK] <time_exp>.
+Itu akan terjadi pada <time_exp> hari, jam [MASK].
+Ini jam [MASK] <time_exp>.
+Itu akan terjadi di <time_exp> hari, jam [MASK].
+Setiap <time_exp> jam [MASK].
+Itu terjadi pada <time_exp> hari, jam [MASK].
+Saat itu jam [MASK] <time_exp>.
+Kejadiannya kemarin <time_exp> jam [MASK].

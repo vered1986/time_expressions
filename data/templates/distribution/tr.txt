@@ -1,6 +1,25 @@
-<time_exp> saat [MASK]'dı.
-<time_exp> saat [MASK].
+<time_exp> saat [MASK]'de gerçekleşecek.
+<time_exp> [MASK]'dir.
+Saat <time_exp> [MASK]'dır.
+Dün <time_exp> [MASK]'da oldu.
 Dün <time_exp> saat [MASK]'da oldu.
-Olay <time_exp> [MASK]'da oldu.
-<time_exp> saat [MASK]'da gerçekleşecek.
+Her <time_exp> saat [MASK]'da.
+<time_exp> [MASK]'de gerçekleşecek.
 Her <time_exp> [MASK]'da.
+<time_exp> [MASK]'da gerçekleşecek.
+Olay <time_exp> [MASK]'de oldu.
+<time_exp> saat [MASK]'da gerçekleşecek.
+Saat <time_exp>ın [MASK]'u.
+Dün <time_exp> [MASK]'de oldu.
+Saat <time_exp> [MASK].
+Her <time_exp> [MASK].
+<time_exp> saat [MASK]'de oldu.
+Her <time_exp> [MASK]'de.
+<time_exp> [MASK]'du.
+<time_exp> [MASK]'da oldu.
+<time_exp> [MASK]'di.
+Olay <time_exp> [MASK]'da oldu.
+<time_exp> [MASK]'ydı.
+<time_exp> saat [MASK]'da meydana geldi.
+Saat <time_exp> [MASK] idi.
+Dün <time_exp> saat [MASK]'de oldu.
